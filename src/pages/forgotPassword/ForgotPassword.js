@@ -1,7 +1,7 @@
 import styles from './ForgotPassword.module.css';
 import Nav from '../../components/nav/Nav';
 import { useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import { ImSpinner9 } from 'react-icons/im';
 
@@ -12,7 +12,6 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const { page } = useParams();
-  const navigate = useNavigate()
 
   // handling reset
   const handleReset = async(e) => {
@@ -88,7 +87,7 @@ export default function ForgotPassword() {
 
       :<form className="form" onSubmit={handleReset}>
         <h1>Reset Password</h1>
-        <TextField id="email" label="Email" variant="outlined" onChange={handleChange("email")}/>
+        <TextField id="email" label="Email" variant="outlined" onChange={(e) => setEmail(e.target.value)}/>
 
 
         {!loading && <button className="bigBtn full">Send Mail</button>}
