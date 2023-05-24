@@ -8,7 +8,7 @@ export default function TradeCounter({ user }) {
 
   useEffect(() => {
     // Establish a socket.io connection
-    const socket = io(`http://localhost:5000/`);
+    const socket = io(`https://ctmserver.herokuapp.com/`);
 
     // Listen for the 'tradeProgressUpdated' event
     socket.on('tradeProgressUpdated', () => fetchTrades());
@@ -20,7 +20,7 @@ export default function TradeCounter({ user }) {
 
   const fetchTrades = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/trades/user/${user.email}`);
+      const response = await fetch(`https://ctmserver.herokuapp.com/api/trades/user/${user.email}`);
       const data = await response.json();
       if (data) setTrades(data);
     } catch (error) {

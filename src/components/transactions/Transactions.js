@@ -64,7 +64,7 @@ export default function Transactions({user, transactions, limit }) {
                 
                 <div className={s.left}>
                   <p className={s.type}>
-                    {calculateRecipient(user, doc).length > 20? calculateRecipient(user, doc).slice(0, 15) + '...' : calculateRecipient(user, doc)}
+                    {calculateRecipient(user, doc).length > 17? calculateRecipient(user, doc).slice(0, 15) + '...' : calculateRecipient(user, doc)}
                   </p>
                   <p className={s.date}>{dateFormat(`${doc?.date}`, "mmmm d, H:MM")}</p>
                 </div>

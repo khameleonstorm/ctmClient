@@ -1,56 +1,103 @@
 import styles from './ForgotPassword.module.css';
 import Nav from '../../components/nav/Nav';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-// import { PulseLoader } from 'react-spinners';
+import { ImSpinner9 } from 'react-icons/im';
 
 export default function ForgotPassword() {
-  const [formError, setFormError] = useState({
-    email: null,
-  })
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const [email, setEmail] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const { page } = useParams();
   const navigate = useNavigate()
-  const [values, setValues] = useState({
-    email: '',
-  });
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-    setFormError({ ...formError, [prop]: null })
-  };
 
   // handling reset
-  const handleReset = (e) => {
+  const handleReset = async(e) => {
     e.preventDefault()
 
-    if(values.email === "" || !values.email.includes("@") || values.email.length < 5) {
-      setFormError({...formError, email: "Email is invalid"});
-      return
+    if(email === "" || !email.includes("@") || email.length < 5) return setError('Email is invalid');
+
+    // sending data to server
+    try {
+      setLoading(true)
+      setError(null)
+
+      const res = await axios.post('https://ctmserver.herokuapp.com/api/users/reset-password', { email })
+      if(res.status === 200) {
+        setLoading(false)
+        setSuccess("Check your email for a reset link")
+      }
+      else {
+        setLoading(false)
+        setError("Invalid Credentials")
+      }
+    } catch (error) {
+      setLoading(false)
+      setError("Invalid Credentials")
     }
-    // resetPassword(values.email)
   }
 
-  // useEffect(() => {
-  //   if(user) navigate('/')
-  // }, [user, navigate])
+
+
+  // handling new password
+  const handleNewPassword = async(e) => {
+    e.preventDefault()
+
+    if(email === "" || !email.includes("@") || email.length < 5) return setError('Email is invalid');
+    if(newPassword === "" || newPassword.length < 5) return setError('password is invalid');
+
+    // sending data to server
+    try {
+      setLoading(true)
+      setError(null)
+
+      const res = await axios.post('https://ctmserver.herokuapp.com/api/users/new-password', { email, newPassword })
+      if(res.status === 200) {
+        setLoading(false)
+        setSuccess("Password reset successful")
+      }
+      else {
+        setLoading(false)
+        setError("Invalid Credentials")
+      }
+    } catch (error) {
+      setLoading(false)
+      setError("Invalid Credentials")
+    }
+  }
 
 
   return (
     <div className="formCtn">
       <Nav black={true}/>
-      <form className="form" onSubmit={handleReset}>
+      {page === 'newPassword' ? 
+          <form className="form" onSubmit={handleNewPassword}>
+            <h1>Enter New Password!</h1>
+            <TextField value={email} id="email" label="Email" variant="outlined" onChange={(e) => setEmail(e.target.value)}/>         
+            <TextField value={password} id="password" label="Password" variant="outlined" onChange={(e) => setNewPassword(e.target.value)}/>
+
+            {!loading && <button className="bigBtn full">Reset</button>}
+            {loading && <button disabled className="bigBtn full load"><ImSpinner9 className='spin' color="#ffffff73" size={25}/></button>}
+            {error && <p className="formError">{error}</p>} 
+            {success && <p className="formSuccess">{success}</p>}        
+            <Link to="/login" className={styles.link}>Back to Login?</Link>
+        </form>
+
+      :<form className="form" onSubmit={handleReset}>
         <h1>Reset Password</h1>
         <TextField id="email" label="Email" variant="outlined" onChange={handleChange("email")}/>
 
-        {/* {!isPending && <button className="bigBtn full">Reset</button>}
-        {isPending && <button disabled className="bigBtn full load"><PulseLoader color='#000000' size={10}/> </button>}
-        {errorMessage && <p className="formError">{errorMessage}</p>}
-        {successMessage && <p className={styles.success}>{successMessage}</p>} */}
-        {formError.email && <p className={styles.error}>{formError.email}</p>}
-        
-      <Link to="/login" className={styles.link}>Back to Login?</Link>
-      </form>
+
+        {!loading && <button className="bigBtn full">Send Mail</button>}
+        {loading && <button disabled className="bigBtn full load"><ImSpinner9 className='spin' color="#ffffff73" size={25}/></button>}
+        {error && <p className="formError">{error}</p>}
+        {success && <p className="formSuccess">{success}</p>}       
+        <Link to="/login" className={styles.link}>Back to Login?</Link>
+    </form>
+      }
 
     </div>
   )

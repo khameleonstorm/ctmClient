@@ -32,7 +32,7 @@ export default function Modal({type, user, handleModal}) {
     setError(null)
     setSuccess(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/transfers/${type}`, {
+      const res = await fetch(`https://ctmserver.herokuapp.com/api/transfers/${type}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( transfer )
@@ -50,7 +50,7 @@ export default function Modal({type, user, handleModal}) {
     setError(null)
     setSuccess(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/withdrawals`, {
+      const res = await fetch(`https://ctmserver.herokuapp.com/api/withdrawals`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( withdraw )
@@ -68,7 +68,7 @@ export default function Modal({type, user, handleModal}) {
     setError(null)
     setSuccess(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/trades`, {
+      const res = await fetch(`https://ctmserver.herokuapp.com/api/trades`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( trade )

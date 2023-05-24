@@ -42,7 +42,7 @@ export default function Modal2({type: typeOf, handleModal, user}) {
     setError(null)
     setSuccess(null)
     try {
-      const response = await fetch(`http://localhost:5000/api/deposits`, {
+      const response = await fetch(`https://ctmserver.herokuapp.com/api/deposits`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( deposit )

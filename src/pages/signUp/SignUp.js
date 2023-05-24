@@ -61,7 +61,7 @@ export default function SignUp() {
       setLoading(true)
       setError(null)
       
-      const res = await axios.post('http://localhost:5000/api/users/signup', { ...data })
+      const res = await axios.post('https://ctmserver.herokuapp.com/api/users/signup', { ...data })
       if(res.status === 200)  navigate('/login')
       if(res.status !== 200) setError(res.data.message)
       

@@ -26,7 +26,7 @@ export default function Admin() {
     if (!userDoc) navigate('/login')
     if(userDoc && userDoc.isAdmin === false) navigate('/dashboard')
 
-    const socket = io('http://localhost:5000/')
+    const socket = io('https://ctmserver.herokuapp.com/')
 
       socket.on('connection', () => {
         console.log('Connected to server');
@@ -40,7 +40,7 @@ export default function Admin() {
       // fetch users data using axios
       const fetchUsers = async () => {
         try {
-          const res = await axios.get(`http://localhost:5000/api/users`)
+          const res = await axios.get(`https://ctmserver.herokuapp.com/api/users`)
           if (res.data) setUsers(res.data)
         } catch (error) {
           console.log(error)
@@ -56,7 +56,7 @@ export default function Admin() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/transactions`)
+        const res = await axios.get(`https://ctmserver.herokuapp.com/api/transactions`)
         if (res.data) {
           setDeposits(res.data.filter(transaction => transaction.type === "deposit"))
           setWithdrawals(res.data.filter(transaction => transaction.type === "withdrawal"))
@@ -68,7 +68,7 @@ export default function Admin() {
 
     const fetchTrades = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/trades`)
+        const res = await axios.get(`https://ctmserver.herokuapp.com/api/trades`)
         if (res.data) {
           setTrades(res.data)
 
@@ -96,18 +96,17 @@ export default function Admin() {
       <main>
         <p style={{color: "#001d13", fontSize: "1.1rem", paddingLeft: "30px"}}>Hellooo!  Admin👋</p>
 
-        {page === "home" || page === undefined &&
-          <div className={s.wrp}>
+        {page === "transactions" ? <Approval deposits={deposits} withdrawals={withdrawals} />
+        : page === "ids" ? <h1>ids</h1>
+        : page === "settings" ? <h1>settings</h1>
+
+
+          : <div className={s.wrp}>
             <AdminCards title="Total Users" value={users.length} icon={<HiUsers />} />
             <AdminCards title="Total Deposits" value={deposits.length} icon={<BsDatabaseFillAdd />} />
             <AdminCards title='Total Trades' value={trades.length} icon={<SiSoundcharts />} />
             <AdminCards title='Total Profits' value={profits} icon={<SiSoundcharts />} />
-          </div>
-        }
-
-        {page === "transactions" && <Approval deposits={deposits} withdrawals={withdrawals} />}
-        {page === "ids" && <h1>ids</h1>}
-        {page === "settings" && <h1>settings</h1>}
+          </div>}
       </main>
       </div>
     </>

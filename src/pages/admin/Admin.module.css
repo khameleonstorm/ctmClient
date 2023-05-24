@@ -24,3 +24,13 @@
   gap: 20px 10px;
   padding: 20px;
 }
+
+
+
+@media screen and (max-width: 1100px){
+.ctn main{
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+}

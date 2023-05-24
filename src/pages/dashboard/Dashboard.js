@@ -34,7 +34,7 @@ export default function Dashboard() {
     if (!userDoc) navigate('/login')
     if(userDoc && userDoc.isAdmin === true) navigate('/admin')
 
-    const socket = io('http://localhost:5000/')
+    const socket = io('https://ctmserver.herokuapp.com/')
 
       socket.on('connection', () => {
         console.log('Connected to server');
@@ -44,7 +44,7 @@ export default function Dashboard() {
       // fetch user data using axios
       const fetchUser = async () => {
         try {
-          const res = await axios.get(`http://localhost:5000/api/users/${userDoc._id}`)
+          const res = await axios.get(`https://ctmserver.herokuapp.com/api/users/${userDoc._id}`)
           setUserDoc(res.data)
           
           // get user token from local storage
@@ -73,7 +73,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/transactions/user/${userDoc.email}`)
+        const res = await axios.get(`https://ctmserver.herokuapp.com/api/transactions/user/${userDoc.email}`)
         console.log(res.data)
         setTransactions(res.data)
       } catch (error) {

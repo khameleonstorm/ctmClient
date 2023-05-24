@@ -25,6 +25,7 @@ function App() {
           <Route path="/verify/:email" element={<Verify />} />
           <Route path="/resend-email/:email" element={<ResendEmail />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/forgotPassword/:page" element={<ForgotPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/:page" element={<Dashboard />} />
           <Route path="/admin" element={<Admin />} />
