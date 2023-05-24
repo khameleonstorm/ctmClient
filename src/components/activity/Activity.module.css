@@ -1,0 +1,21 @@
+.ctn{
+  width: 350px;
+  height: 200px;
+  background-color: #f5f2fd;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.ctn img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+@media screen and (max-width: 500px){
+.ctn{
+  width: 100%;
+}
+}

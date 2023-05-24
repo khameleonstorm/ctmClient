@@ -1,0 +1,126 @@
+.ctn {
+  background-color: #f5f2fd;
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  transition: all ease-in-out .5s;
+}
+
+.wrp{
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.menu{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu a{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: .6rem;
+}
+
+.menu a svg{
+  padding: 9px;
+}
+
+.activity{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.activity div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  transition: all ease-in-out .3s;
+  background-color: rgba(240, 233, 255, 0.4);
+}
+
+.activity div:hover{
+  background-color: #ece3ff;
+}
+
+.activity div svg{
+  font-size: 1rem;
+  fill: #00B35F;
+  margin-left: 3px;
+}
+
+.activity div h3, .activity div h1{
+  font-size: .7rem;
+  font-weight: 500;
+  color: #0a0024;
+}
+
+.activity div h1{
+  font-size: 1.7rem;
+}
+
+.logout{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+}
+
+.logout:hover p{
+  color: #f97800;
+  font-weight: 100;
+}
+
+.logout:hover{
+  gap: 15px;
+}
+
+.logout svg{
+  font-size: 1.3rem;
+  fill: #f97800;
+  transform: rotate(180deg);
+}
+
+.logout p{
+  font-size: .9rem;
+  font-weight: 200;
+  color: #0a0024;
+}
+
+.close{
+  font-size: 1.7rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: none;
+}
+
+
+
+@media screen and (max-width: 1100px){
+.ctn {
+  margin: -100vh;
+}
+
+.close{
+  display: block;
+}
+}

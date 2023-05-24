@@ -1,0 +1,51 @@
+.ctn{
+  width: 350px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.card{
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: all ease-in-out .3s;
+  background-color: #f5f2fd;
+}
+
+.card:hover{
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.card svg{
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 3rem;
+  color: #000000aa;
+  background-image: linear-gradient(180deg,  #00ff9d0f, #00ff9d0f);
+  opacity: .5;
+}
+
+.card:nth-child(2) svg{
+  background-image: linear-gradient(180deg,  #ff00370f, #ff00370f);
+}
+
+.card:nth-child(3) svg{
+  background-image: linear-gradient(180deg,  #fb00ff11, #fb00ff11);
+}
+
+
+
+
+
+@media screen and (max-width: 500px){
+.ctn{
+  width: 100%;
+}
+}

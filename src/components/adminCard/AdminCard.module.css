@@ -1,0 +1,48 @@
+.card{
+  width: 350px;
+  height: 200px;
+  border-radius: 30px;
+  box-shadow: 3px 3px 0 5px rgba(0, 53, 17, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  background-image: linear-gradient(250deg, #00B35F 50%, #00B373 50%);
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover{
+  transform: scale(1.05);
+}
+
+.title{
+  display: flex;
+  justify-content: space-between;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #f5f2ff75;
+}
+
+.title img{
+  width: 80px;
+}
+
+.value{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.value h2{
+  font-size: 5rem;
+  font-weight: 400;
+  color: #f5f2ffd9;
+  letter-spacing: -3px;
+}
+
+.value svg{
+  font-size: 7rem;
+  color: #f5f2ff33;
+}

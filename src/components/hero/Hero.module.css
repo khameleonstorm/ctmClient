@@ -1,0 +1,97 @@
+.ctn{
+  width: 100%;
+  height: 100vh;
+}
+
+.wrp{
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.left h1{
+  width: 600px;
+  font-size: 3.5rem;
+  font-weight: 200;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  letter-spacing: .8;
+  word-spacing: 3px;
+}
+
+.title{
+  font-size: 7rem !important;
+  letter-spacing: .5 !important;
+}
+
+.left p{
+  font-size: 1.8rem;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+
+.right{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  margin-left: -50px;
+}
+
+.right img{
+  position: fixed;
+  z-index: -1;
+  transition: all 1s ease-out;
+}
+
+/* scroll image out of the view port */
+.scroll{
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+
+@media screen and (max-width: 900px){
+.left{
+  width: 100%;
+  padding: 0 20px;
+}
+
+.left h1{
+  font-size: 2.5rem;
+  width: 100%;
+}
+
+.left p{
+  font-size: 1.5rem;
+}
+
+.right{
+  display: none;
+}
+}
+
+
+@media screen and (max-width: 500px){
+.ctn{
+  height: 65vh;
+}
+
+.left h1{
+  font-size: 8.3vw;
+}
+
+.title{
+  font-size: 14vw !important;
+}
+
+.left p{
+  font-size: 6vw;
+}
+}

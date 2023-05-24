@@ -1,0 +1,36 @@
+.ctn{
+  width: 200px;
+  height: 284px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(180deg,  rgba(240, 233, 255, 0.4) 20%, rgba(0, 255, 157, 0.4));
+  position: relative;
+}
+
+.ctn p{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 1rem;
+  font-weight: 400;
+  color: #131313;
+  letter-spacing: -2;
+  text-align: center;
+  padding: 10px;
+}
+
+.ctn img{
+  width: 100px;
+}
+
+
+@media screen and (max-width: 500px){
+.ctn{
+  width: 100%;
+  display: none;
+}
+}

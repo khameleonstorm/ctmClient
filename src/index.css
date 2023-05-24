@@ -1,0 +1,345 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+a.active:after{
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 30px;
+  height: 3px;
+  border-radius: 2px;
+  background: #00b35f;
+}
+
+button{
+  background: none;
+  border: none;
+}
+
+li{
+  list-style: none;
+  color: inherit;
+}
+
+
+
+/* button styling */
+.bigBtn{
+  width: 250px;
+  background-image: linear-gradient(90deg, #00b35f 0%, #00ac5c 50%, #00b35f 100%);
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  transition: all ease-out .3s;
+  transition-delay: .1s;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bigBtn::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #232324;
+  transform: scaleX(0);
+  transform-origin: 0;
+  transition: all ease-in-out .3s;
+  z-index: -1;
+}
+
+.bigBtn:hover,
+.bigBtn:focus{
+  color: #ffffff;
+}
+
+.bigBtn:hover:before,
+.bigBtn:focus:before{
+  transform: scaleX(1);
+}
+
+.bigBtn.full{
+  width: 100%;
+}
+
+.load{
+  padding: 16px;
+}
+
+.heroBtn{
+  width: 350px;
+  padding: 22px;
+  background: #000000;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  transition: all ease-out .3s;
+  transition-delay: .1s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.heroBtn::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #00b35f;
+  transform: scaleX(0);
+  transform-origin: 1;
+  transition: all ease-in-out .3s;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.heroBtn:hover,
+.heroBtn:focus{
+  color: #ffffff;
+}
+
+.heroBtn:hover:before,
+.heroBtn:focus:before{
+  transform: scaleX(1);
+}
+
+
+/* form styling */
+
+.formCtn{
+  min-height: 100vh;
+  padding: 100px 0 20px 0;
+  display: grid;
+  place-items: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form{
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 10px;
+}
+
+.form h1, .form h2{
+  font-size: 3.5rem;
+  color: #232324;
+  font-weight: 300;
+  text-align: center;
+}
+
+.form h2{
+  font-size: 2rem;
+}
+
+.form .MuiFormControl-root div{
+  border-radius: 10px !important;
+}
+
+.formError{
+  display: block;
+  width: 100%;
+  color: rgb(247, 45, 45);
+  background-color: rgba(255, 0, 0, 0.05);
+  padding: 10px;
+  border-radius: 12px;
+  border-left: 2px solid rgb(247, 45, 45);
+  font-size: 0.8rem;
+  word-wrap: break-word;
+  margin: 10px 0;
+}
+
+.formSuccess{
+  display: block;
+  width: 100%;
+  color: rgb(60, 188, 0);
+  background-color: rgba(0, 255, 60, 0.06);
+  padding: 10px;
+  border-radius: 12px;
+  border-left: 2px solid rgb(13, 255, 0);
+  font-size: 0.8rem;
+  word-wrap: break-word;
+  margin: 10px 0;
+}
+
+
+
+/* modal styling */
+.modalCtn{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalWrp{
+  width: 300px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  animation: modalPop .3s ease-out forwards;
+  transform: scale(0);
+  transform-origin: center;
+  transition: all ease-in .5s;
+}
+
+.modalTitle{
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #232324;
+  margin-bottom: 10px;
+  text-align: center;
+} 
+
+.modalInput{
+  width: 100%;
+  padding: 18px;
+  border-radius: 40px;
+  border: 1px solid rgba(35, 35, 36, 0.6);
+  margin-bottom: 20px;
+  font-size: .9rem;
+  font-weight: 500;
+  color: rgba(35, 35, 36, 0.6);
+  transition: all ease-out .3s;
+  outline: none;
+}
+
+.modalBtn, .cancel{
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 40px;
+  border:  1px solid rgba(0, 179, 95, 0.6);
+  font-size: .8rem;
+  font-weight: 500;
+  color: #232324;
+  padding: 10px;
+  background: rgba(0, 179, 95, 0.06);
+  transition: all ease-out .5s;
+  cursor: pointer;
+}
+
+.modalBtn:hover,
+.modalBtn:focus{
+  background: rgba(0, 179, 95, 0.1);
+}
+
+.cancel{
+  background: rgba(255, 0, 0, 0.06);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  color: rgba(255, 0, 0, 0.8);
+}
+
+.cancel:hover,
+.cancel:focus{
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.loadBtn{
+  height: fit-content;
+  padding: 10px;
+  color: rgba(35, 35, 36, 0.6);
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@keyframes modalPop{
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+
+
+.spin{
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+
+@media screen and (max-width: 600px){
+.formCtn{
+  background: white;
+  place-items: start;
+}
+
+.form{
+  width: 100%;
+  background: white;
+  box-shadow: none;
+}
+
+.form.left h1{
+  text-align: left;
+}
+
+.heroBtn{
+  width: 100%;
+  background: #00b35f;
+}
+  
+}
+
+@media screen and (max-width: 360px){
+.form h1{
+  font-size: 8vw;
+}
+}

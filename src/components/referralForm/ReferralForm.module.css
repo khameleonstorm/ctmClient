@@ -1,0 +1,25 @@
+.input{
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 179, 95, 0.5);
+  font-size: .9rem;
+  font-weight: 400;
+  color: rgba(35, 35, 36, 0.6);
+  outline: none;
+  background: none;
+}
+
+.checkbox{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox input{
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}

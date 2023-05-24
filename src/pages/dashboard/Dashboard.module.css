@@ -1,0 +1,75 @@
+.ctn{
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  background-color: rgba(240, 233, 255, 0.4);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.ctn main{
+  width: 800px;
+  min-height: 100vh;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.ctn main .wrp{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  gap: 40px 10px;
+  padding: 20px;
+}
+
+.miniNav{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+.miniNav p{
+  font-size: 1.1rem;
+  color: #000000ba;
+}
+
+.miniNav svg{
+  font-size: 1.7rem;
+  display: none;
+}
+
+
+
+@media screen and (max-width: 1100px){
+.ctn{
+  padding-left: 230px;
+}
+
+.miniNav svg{
+  display: block;
+}
+}
+
+@media screen and (max-width: 900px){
+.ctn{
+  padding-left: 0px;
+}
+
+.ctn main{
+  width: 100%;
+  padding: 10px 10px 100px 10px;
+}
+
+.ctn main .wrp{
+  padding: 30px 0 10px 0;
+}
+
+.miniNav{
+  padding: 10px 0 0 0;
+}
+}

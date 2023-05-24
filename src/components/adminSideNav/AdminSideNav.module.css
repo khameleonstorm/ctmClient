@@ -1,0 +1,97 @@
+.ctn {
+  background-color: #f5f2fd;
+  width: 270px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+  transition: all ease-in-out .5s;
+}
+
+.wrp{
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.logo {
+  width: 100%;
+}
+
+.logo img{
+  width: 90px;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  background-color: rgba(240, 233, 255, 0.4);
+  overflow: hidden;
+  border-top: .5px solid #f0e9ff3a;
+  border-bottom: .5px solid #f0e9ff3a;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-size: 1rem;
+  gap: 30px;
+  padding: 5px;
+  transition: all ease-in-out .3s;
+}
+
+.menu a:hover {
+  background-color: #f5f2fd;
+}
+
+.menu a svg {
+  padding: 11px;
+}
+
+.menu a svg path{
+  transition: all ease-in-out .3s;
+}
+
+.menu a:hover svg path{
+  fill: #00b35f !important;
+}
+
+
+.logout{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+  padding: 5px 0 0 10px;
+}
+
+.logout:hover p{
+  color: #f97800;
+  font-weight: 100;
+}
+
+.logout:hover{
+  gap: 15px;
+}
+
+.logout svg{
+  font-size: 1.3rem;
+  fill: #f97800;
+  transform: rotate(180deg);
+}
+
+.logout p{
+  font-size: .9rem;
+  font-weight: 200;
+  color: #0a0024;
+}
