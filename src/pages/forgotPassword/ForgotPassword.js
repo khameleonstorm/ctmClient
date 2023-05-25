@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import { ImSpinner9 } from 'react-icons/im';
+import axios from 'axios';
 
 export default function ForgotPassword() {
   const [loading, setLoading] = useState(false);
@@ -24,7 +25,7 @@ export default function ForgotPassword() {
       setLoading(true)
       setError(null)
 
-      const res = await axios.post('https://ctmserver.herokuapp.com/api/users/reset-password', { email })
+      const res = await axios.post('http://localhost:5000/api/users/reset-password', { email })
       if(res.status === 200) {
         setLoading(false)
         setSuccess("Check your email for a reset link")

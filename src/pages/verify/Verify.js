@@ -10,7 +10,7 @@ const Verify = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.post('http://localhost:5000/api/users/verify', { email })
+    axios.post('https://ctmserver.herokuapp.com/api/users/verify', { email })
       .then(res => {
         if(res.status === 200) {
           setVerified(true)

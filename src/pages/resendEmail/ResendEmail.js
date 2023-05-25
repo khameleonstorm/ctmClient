@@ -18,7 +18,7 @@ export default function ResendEmail() {
     setSuccess(false)
 
     try {
-      const res = await axios.post('http://localhost:5000/api/users/resend-email', { email })
+      const res = await axios.post('https://ctmserver.herokuapp.com/api/users/resend-email', { email })
       if(res.status === 200) setSuccess(true)
       if(res.status !== 200) setError(res.data.message)
 
