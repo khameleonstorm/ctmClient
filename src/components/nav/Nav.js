@@ -38,14 +38,14 @@ export default function Nav({black}) {
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
 
-          {!user &&
+          {!user.isVerified &&
           <>
             <Link className={styles.getStarted} to="/signUp">Sign up</Link>
             <Link className={styles.login} to="/login">Login</Link>
           </>
           }
 
-          {user && <Link className={styles.getStarted} to="/dashboard">Dashboard</Link>}
+          {user.isVerified && <Link className={styles.getStarted} to="/dashboard">Dashboard</Link>}
           </div>
           }
 

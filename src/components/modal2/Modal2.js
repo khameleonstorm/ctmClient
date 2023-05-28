@@ -85,7 +85,7 @@ export default function Modal2({type: typeOf, handleModal, user}) {
         <input value={deposit.amount} type='number' placeholder='Enter Amount' className='modalInput' onChange={(e) => setDeposit({...deposit, amount: e.target.value})}/>
         <input value={deposit.hash} type='text' placeholder='Enter Transaction Hash' className='modalInput' onChange={(e) => setDeposit({...deposit, hash: e.target.value})}/>
         <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p>
-        <p className={`modalBtn ${loading && 'loadBtn'}`} onClick={handleDeposit}>{!loading && <span>Send</span>} {loading && <ImSpinner8 className='spin'/>}</p>
+        <p className={`modalBtn ${loading && 'loadBtn'}`} onClick={handleDeposit}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
         {error && <p className='formError'>{error}</p>}
         {success && <p className='formSuccess'>{success}</p>}
       </div>
@@ -96,7 +96,7 @@ export default function Modal2({type: typeOf, handleModal, user}) {
         <input value={deposit.amount} type='number' placeholder='Enter Amount' className='modalInput' onChange={(e) => setDeposit({...deposit, amount: e.target.value})}/>
         <input value={deposit.hash} type='text' placeholder='Enter Transaction Ref' className='modalInput' onChange={(e) => setDeposit({...deposit, hash: e.target.value})}/>
         <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p>
-        <p className={`modalBtn ${loading && 'loadBtn'}`} onClick={handleDeposit}>{!loading && <span>Send</span>} {loading && <ImSpinner8 className='spin'/>}</p>
+        <p className={`modalBtn ${loading && 'loadBtn'}`} onClick={handleDeposit}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
         {error && <p className='formError'>{error}</p>}
         {success && <p className='formSuccess'>{success}</p>}
       </div>

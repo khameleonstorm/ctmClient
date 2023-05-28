@@ -1,8 +1,7 @@
 .ctn{
   width: 100%;
   min-height: 100vh;
-  height: 100vh;
-  background-color: rgba(240, 233, 255, 0.4);
+  background-image: linear-gradient(90deg, rgba(240, 233, 255, 0.4), rgba(240, 233, 255, 0.05));
   backdrop-filter: blur(10px);
   position: relative;
 }
