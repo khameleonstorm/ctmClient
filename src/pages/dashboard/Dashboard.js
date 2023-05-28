@@ -19,7 +19,7 @@ export default function Dashboard() {
   const user = JSON.parse(localStorage.getItem('ctm_user'))?.user
   const { page } = useParams();
   const navigate = useNavigate()
-  const [userDoc, setUserDoc] = useState(user? user : null);
+  const [userDoc, setUserDoc] = useState(user.isVerified? user : null);
   const [transactions, setTransactions] = useState([])
 
 
