@@ -9,6 +9,7 @@ import { BsDatabaseFillAdd } from 'react-icons/bs'
 import { SiSoundcharts } from 'react-icons/si'
 import AdminSideNav from '../../components/adminSideNav/AdminSideNav';
 import Approval from '../../components/approval/Approval';
+import Ids from '../../components/ids/Ids';
 
 export default function Admin() {
   const user = JSON.parse(localStorage.getItem('ctm_user'))?.user
@@ -20,6 +21,7 @@ export default function Admin() {
   const [trades, setTrades] = useState([]);
   const [users, setUsers] = useState([]);
   const [profits, setProfits] = useState([])
+  const [nins, setNins] = useState([])
 
   
   useEffect(() => {
@@ -84,6 +86,17 @@ export default function Admin() {
       }
     }
 
+    const fetchNins = async () => {
+      try {
+        const res = await axios.get(`https://ctmserver.herokuapp.com/api/nins`)
+        if (res.data) setNins(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+
+    fetchNins()
     fetchTransactions()
     fetchTrades()
   }, [])
@@ -97,7 +110,7 @@ export default function Admin() {
         <p style={{color: "#001d13", fontSize: "1.1rem", paddingLeft: "30px"}}>Hellooo!  Admin👋</p>
 
         {page === "transactions" ? <Approval deposits={deposits} withdrawals={withdrawals} />
-        : page === "ids" ? <h1>ids</h1>
+        : page === "ids" ? <Ids nins={nins}/>
         : page === "settings" ? <h1>settings</h1>
 
 

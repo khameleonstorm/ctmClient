@@ -15,10 +15,41 @@ export default function Avatar({ user, size}) {
   }
 
   const handleSubmit = () => {
+    setLoading(true)
     if (NIN !== '') {
-      // send NIN to backend
-      console.log(NIN)
-      handleModal(false)
+      fetch('https://ctmserver.herokuapp.com/api/nins', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({nin: NIN, name: user.fullName, email: user.email})
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          setError(data.error)
+          setLoading(false)
+          setTimeout(() => {
+            setError(false)
+            handleModal(false)
+          }, 3000);
+        } else {
+          setSuccess(data.message)
+          setLoading(false)
+          setTimeout(() => {
+            setSuccess(false)
+            handleModal(false)
+          }, 3000);
+        }
+      })
+      .catch(err => {
+        setError('Something went wrong, please try again')
+        setLoading(false)
+        setTimeout(() => {
+          setError(false)
+          handleModal(false)
+        }, 3000);
+      })
     }
   }
 

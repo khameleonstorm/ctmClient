@@ -140,7 +140,7 @@ export default function Approval({deposits, withdrawals}) {
               <input onClick={() => handleCopy(data.hash)} value={data.hash} className='modalInput'  readOnly/>
               <input value={data.date} className='modalInput'  readOnly/>
               <p className='cancel' onClick={closeModal}><span>Cancel</span></p>
-              <p className={`modalBtn ${loading && 'loadBtn'}`} onClick={() => handleApproval(data._id)}>{!loading && <span>Approve</span>} {loading && <ImSpinner8 className='spin'/>}</p>
+              <p className='modalBtn' onClick={() => handleApproval(data._id)}>{!loading && <span>Approve</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
               {error && <p className='formError'>{error}</p>}
               {success && <p className='formSuccess'>{success}</p>}
               </div>
@@ -159,7 +159,7 @@ export default function Approval({deposits, withdrawals}) {
               <input onClick={() => handleCopy(data.wallet)} value={data.wallet} className='modalInput'  readOnly/>
               <input value={data.date} className='modalInput'  readOnly/>
               <p className='cancel' onClick={closeModal}><span>Cancel</span></p>
-              <p className={`modalBtn ${loading && 'loadBtn'}`} onClick={() => handleApproval(data._id)}>{!loading && <span>Approve</span>} {loading && <ImSpinner8 className='spin'/>}</p>
+              <p className='modalBtn' onClick={() => handleApproval(data._id)}>{!loading && <span>Approve</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
               {error && <p className='formError'>{error}</p>}
               {success && <p className='formSuccess'>{success}</p>}
               </div>

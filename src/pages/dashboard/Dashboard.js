@@ -29,6 +29,24 @@ export default function Dashboard() {
     else rightNav.style.margin = '-100vw'
   }
 
+
+  // fetch user data using axios
+  const fetchUser = async () => {
+    try {
+      const res = await axios.get(`https://ctmserver.herokuapp.com/api/users/${userDoc._id}`)
+      setUserDoc(res.data)
+      
+      // get user token from local storage
+      const token = JSON.parse(localStorage.getItem('ctm_user')).token
+
+      // update user data in local storage
+      localStorage.setItem('ctm_user', JSON.stringify({user: res.data, token}))
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   
   useEffect(() => {
     if (!userDoc) navigate('/login')
@@ -39,24 +57,6 @@ export default function Dashboard() {
       socket.on('connection', () => {
         console.log('Connected to server');
       });
-
-
-      // fetch user data using axios
-      const fetchUser = async () => {
-        try {
-          const res = await axios.get(`https://ctmserver.herokuapp.com/api/users/${userDoc._id}`)
-          setUserDoc(res.data)
-          
-          // get user token from local storage
-          const token = JSON.parse(localStorage.getItem('ctm_user')).token
-
-          // update user data in local storage
-          localStorage.setItem('ctm_user', JSON.stringify({user: res.data, token}))
-
-        } catch (error) {
-          console.log(error)
-        }
-      }
 
       if(userDoc) fetchUser()
 

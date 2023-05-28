@@ -27,7 +27,7 @@ export default function RightNav({handleOpen}) {
     // get all trades
     const getTrades = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/trades/user/${user.email}`)
+        const res = await axios.get(`https://ctmserver.herokuapp.com/api/trades/user/${user.email}`).
         console.log(res.data)
         setActiveTrades(res.data.filter(trade => trade.status === 'pending').length)
         setCompletedTrades(res.data.filter(trade => trade.status === 'completed').length)
@@ -43,7 +43,7 @@ export default function RightNav({handleOpen}) {
   useEffect(() => {
     const getReferrals = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/users/referrals/${user.username}`)
+        const res = await axios.get(`https://ctmserver.herokuapp.com/api/users/referrals/${user.username}`)
         console.log(res.data)
         
         if (res.data.length === 0 || !res.data) setReferrals(0)

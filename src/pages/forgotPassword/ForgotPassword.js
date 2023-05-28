@@ -25,7 +25,7 @@ export default function ForgotPassword() {
       setLoading(true)
       setError(null)
 
-      const res = await axios.post('http://localhost:5000/api/users/reset-password', { email })
+      const res = await axios.post('https://ctmserver.herokuapp.com/api/users/reset-password', { email })
       if(res.status === 200) {
         setLoading(false)
         setSuccess("Check your email for a reset link")
