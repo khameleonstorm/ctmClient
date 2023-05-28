@@ -76,7 +76,7 @@ export default function SignUp() {
 
 
   useEffect(() => {
-    if(user.isVerified) navigate('/dashboard')
+    if(user?.isVerified) navigate('/dashboard')
   }, [user, navigate]);
 
 

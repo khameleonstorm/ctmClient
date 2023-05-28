@@ -76,7 +76,7 @@ export default function Login() {
   }
 
   useEffect(() => {
-    if(user.isVerified) navigate('/')
+    if(user?.isVerified) navigate('/')
   }, [user, navigate])
 
 

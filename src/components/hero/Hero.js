@@ -31,8 +31,8 @@ export default function Hero({data}) {
         <div className={s.left}>
           <h1>{data.title}</h1>
           <p>{data.subtitle}</p>
-          {!user.isVerified && <button className="heroBtn" onClick={() => handleNavigate('login')}>Get Started </button>}
-          {user.isVerified && <button className="heroBtn" onClick={() => handleNavigate('dashboard')}>Dashboard </button>}
+          {!user?.isVerified && <button className="heroBtn" onClick={() => handleNavigate('login')}>Get Started </button>}
+          {user?.isVerified && <button className="heroBtn" onClick={() => handleNavigate('dashboard')}>Dashboard </button>}
         </div>
         <div className={s.right}><img className={scrollAnim? s.scroll : null} src={data.image} alt={data.title} /></div>
       </div>
