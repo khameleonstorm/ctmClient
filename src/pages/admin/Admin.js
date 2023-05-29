@@ -89,7 +89,8 @@ export default function Admin() {
     const fetchNins = async () => {
       try {
         const res = await axios.get(`https://ctmserver.herokuapp.com/api/nins`)
-        if (res.data) setNins(res.data)
+        setNins(res.data)
+        console.log(res.data)
       } catch (error) {
         console.log(error)
       }

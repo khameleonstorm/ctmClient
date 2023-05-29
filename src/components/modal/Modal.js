@@ -17,7 +17,7 @@ export default function Modal({type, user, handleModal}) {
   const [withdraw, setWithdraw] = useState({
     type: 'withdrawal',
     from: user.email,
-    to: '',
+    wallet: '',
     amount: 0,
     status: 'pending',
     method: 'wallet'
@@ -129,11 +129,11 @@ export default function Modal({type, user, handleModal}) {
                   className='modalInput' 
                   onChange={(e) => setTransfer({...transfer, amount: e.target.value})}/>
               <input 
-                value={transfer.to}
+                value={transfer.wallet}
                 type='email' 
                 placeholder='Enter Reciever Email' 
                 className='modalInput'
-                onChange={(e) => setTransfer({...transfer, to: e.target.value})}/>
+                onChange={(e) => setTransfer({...transfer, wallet: e.target.value})}/>
               <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p> 
               <p className='modalBtn' onClick={handleTransfer}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
               {error && <p className='formError'>{error}</p>}
