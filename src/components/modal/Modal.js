@@ -74,7 +74,8 @@ export default function Modal({type, user, handleModal}) {
         body: JSON.stringify( trade )
       })
       const data = await res.json()
-      if (data) setSuccess("Trade Successfully Initiated")
+      if (res.status === 200) setSuccess("Trade Successfully Initiated")
+      if (res.status !== 200) throw new Error(data.message)
 
     } catch (error) { setError(error.message) }
     setLoading(false)
