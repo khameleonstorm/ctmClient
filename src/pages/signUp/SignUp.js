@@ -69,7 +69,7 @@ export default function SignUp() {
       setLoading(false)
     } catch (error) {
       setLoading(false)
-      setError("internal server error, try again later")
+      setError(error.response?.data.message)
       console.log("Catched Error", error.response?.data)
     }
   };
