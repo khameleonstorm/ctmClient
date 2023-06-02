@@ -12,7 +12,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Transfer from '../../components/transfer/Transfer';
 import TradeCounter from '../../components/tradeCounter/TradeCounter';
 import Deposit from '../../components/deposit/Deposit';
-import ReferralForm from '../../components/referralForm/ReferralForm';
+import Referral from '../../components/referral/Referral';
 import { HiMenuAlt3 } from 'react-icons/hi';
 
 export default function Dashboard() {
@@ -21,6 +21,7 @@ export default function Dashboard() {
   const navigate = useNavigate()
   const [userDoc, setUserDoc] = useState(user && user?.isVerified? user : null);
   const [transactions, setTransactions] = useState([])
+  const [trades, setTrades] = useState([])
 
 
   const handleOpen = (e) => {
@@ -47,6 +48,21 @@ export default function Dashboard() {
     }
   }
 
+
+  
+
+  const fetchTrades = async () => {
+    try {
+      const response = await fetch(`https://ctmserver.herokuapp.com/api/trades/user/${userDoc.email}`);
+      const data = await response.json();
+      console.log(data)
+      if (data) setTrades(data);
+    } catch (error) {
+      console.error('Error fetching trades:', error);
+    }
+  };
+
+
   
   useEffect(() => {
     if (!userDoc) navigate('/login')
@@ -64,9 +80,8 @@ export default function Dashboard() {
         console.log('Received change event:', change);
         fetchUser()
       });
-      
 
-      return () => { socket.disconnect()};
+    socket.on('tradeProgressUpdated', () => fetchTrades())
   }, []);
 
 
@@ -81,6 +96,7 @@ export default function Dashboard() {
       }
     }
 
+    fetchTrades()
     fetchTransactions()
   }, [userDoc])
 
@@ -97,15 +113,20 @@ export default function Dashboard() {
             page === 'trade' ?  
               <div className={s.wrp}>
                 <Balance type="trade" user={userDoc}/>
-                <Activity transactions={transactions} trades={[]}  type={"trade"}/>
-                <TradeCounter user={userDoc}/>
+                <Activity transactions={transactions} trades={trades}  type={"trade"}/>
+                <TradeCounter user={userDoc} trades={trades}/>
               </div>:
 
             page === 'transfer' ? <Transfer /> :
 
             page === 'deposit' ? <Deposit /> :
 
-            page === 'referral' ? <ReferralForm /> :
+            page === 'referral' ?  
+            <div className={s.wrp}>
+              <Balance type="bonus" user={userDoc}/>
+              <Activity transactions={transactions} type={"referral"}/>
+              <Referral user={userDoc}/>
+            </div>:
 
             page === 'transactions' ? <Transactions user={userDoc} transactions={transactions}/> :
 

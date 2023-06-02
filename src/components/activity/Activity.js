@@ -10,27 +10,23 @@ export default function Activity({transactions, trades, type}) {
   const [stage3, setStage3] = useState(false)
 
   const handleDeposit = () => {
-    // loop through all transactions with type of deposit and add up the amounts
     let total = 0
-    transactions.forEach(transaction => {
-      if (transaction.type === 'deposit') total += transaction.amount
+    transactions?.forEach(transaction => {
+      if(transaction.type === 'deposit') total += transaction.amount
     })
 
     if (transactions.length === 0 || total > 0 && total < 300) setStage1(true)
-    else setStage1(true)
+    else setStage1(false)
 
     if (total > 300 && total < 30000) setStage2(true)
-    else setStage2(true)
+    else setStage2(false)
 
     if (total > 30000) setStage3(true)
   }
 
-  const handleWithdrawal = () => {
-    // loop through all transactions with type of deposit and add up the amounts
+  const handleBonus = () => {
     let total = 0
-    transactions.forEach(transaction => {
-      if (transaction.type === 'withdrawal') total += transaction.amount
-    })
+    transactions?.forEach(transaction => total += transaction.amount)
 
     if (transactions.length === 0 || total > 0 && total < 300) setStage1(true)
     else setStage1(false)
@@ -43,11 +39,8 @@ export default function Activity({transactions, trades, type}) {
 
 
   const handleTrade = () => {
-    // loop through all trades with type of deposit and add up the amounts
     let total = 0
-    trades.forEach(trade => {
-      if (trade.type === 'deposit') total += trade.amount
-    })
+    trades?.forEach(trade => total += trade.amount)
 
     if (trades.length === 0 || total > 0 && total < 300) setStage1(true)
     else setStage1(false)
@@ -61,7 +54,7 @@ export default function Activity({transactions, trades, type}) {
 
   useEffect(() => {
     if (type === 'deposit') handleDeposit()
-    if (type === 'withdrawal') handleWithdrawal()
+    if (type === 'referral') handleBonus()
     if (type === 'trade') handleTrade()
   }, [transactions, trades])
 

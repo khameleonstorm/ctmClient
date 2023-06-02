@@ -1,34 +1,8 @@
-import { useEffect, useState } from 'react';
 import s from './TradeCounter.module.css';
-import { io } from 'socket.io-client';
 import dateFormat from 'dateformat';
 
-export default function TradeCounter({ user }) {
-  const [trades, setTrades] = useState(null);
+export default function TradeCounter({ trades }) {
 
-  useEffect(() => {
-    // Establish a socket.io connection
-    const socket = io(`https://ctmserver.herokuapp.com/`);
-
-    // Listen for the 'tradeProgressUpdated' event
-    socket.on('tradeProgressUpdated', () => fetchTrades());
-
-    return () => { socket.disconnect() };
-  }, []);
-
-
-
-  const fetchTrades = async () => {
-    try {
-      const response = await fetch(`https://ctmserver.herokuapp.com/api/trades/user/${user.email}`);
-      const data = await response.json();
-      if (data) setTrades(data);
-    } catch (error) {
-      console.error('Error fetching trades:', error);
-    }
-  };
-
-  useEffect(() => { fetchTrades()}, []);
 
   return ((trades && trades.length > 0) &&
     <div className={s.ctn}>
