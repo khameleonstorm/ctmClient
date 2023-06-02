@@ -56,8 +56,8 @@ export default function Modal({type, user, handleModal}) {
         body: JSON.stringify( withdraw )
       })
       const data = await res.json()
-      if (!res.status ==! 200) throw new Error(data.message)
-      if (res.status === 200) setSuccess('Withdrawal Successfully Initiated')
+      console.log(data)
+      setSuccess('Withdrawal Successfully Initiated')
     } catch (error) { setError(error.message) }
     setLoading(false)
   }
@@ -154,11 +154,11 @@ export default function Modal({type, user, handleModal}) {
                 className='modalInput' 
                 onChange={(e) => setWithdraw({...withdraw, amount: e.target.value})}/>
               <input 
-              value={withdraw.to}
-              type='text' 
-              placeholder='Enter only USDT wallet address' 
-              className='modalInput'
-              onChange={(e) => setWithdraw({...withdraw, to: e.target.value})}/>
+                value={withdraw.to}
+                type='text' 
+                placeholder='Enter only USDT wallet address' 
+                className='modalInput'
+                onChange={(e) => setWithdraw({...withdraw, wallet: e.target.value})}/>
               <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p> 
               <p className='modalBtn' onClick={handleWithdraw}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
               {error && <p className='formError'>{error}</p>}

@@ -14,42 +14,29 @@ export default function Avatar({ user, size}) {
     setShowModal(!showModal)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     setLoading(true)
     if (NIN !== '') {
-      fetch('https://ctmserver.herokuapp.com/api/nins', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({nin: NIN, name: user.fullName, email: user.email})
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.error) {
-          setError(data.error)
+      try{
+        const res = await fetch('https://ctmserver.herokuapp.com/api/nins', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({nin: NIN, name: user.fullName, email: user.email})
+        })
+
+        const data = await res.json()
+        if (res.status !== 200) throw new Error(data.message)
+        if (res.status === 200) {
+          setSuccess('Verification Successful')
           setLoading(false)
-          setTimeout(() => {
-            setError(false)
-            handleModal(false)
-          }, 3000);
-        } else {
-          setSuccess(data.message)
-          setLoading(false)
-          setTimeout(() => {
-            setSuccess(false)
-            handleModal(false)
-          }, 3000);
         }
-      })
-      .catch(err => {
-        setError('Something went wrong, please try again')
+
+      } catch (error) {
+        setError(error.message)
         setLoading(false)
-        setTimeout(() => {
-          setError(false)
-          handleModal(false)
-        }, 3000);
-      })
+      }
     }
   }
 
