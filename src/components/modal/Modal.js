@@ -55,10 +55,16 @@ export default function Modal({type, user, handleModal}) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( withdraw )
       })
+
       const data = await res.json()
-      console.log(data)
-      setSuccess('Withdrawal Successfully Initiated')
-    } catch (error) { setError(error.message) }
+      if (res.status !== 200) throw new Error(data.message)
+      if (res.status === 200) {
+        setSuccess('Withdrawal Successfully Initiated')
+        setLoading(false)
+      } 
+    } catch (error) { 
+      setError(error.message) 
+    }
     setLoading(false)
   }
 

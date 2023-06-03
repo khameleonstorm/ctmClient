@@ -37,6 +37,13 @@ export default function Avatar({ user, size}) {
         setError(error.message)
         setLoading(false)
       }
+
+      setTimeout(() => {
+        setSuccess(false)
+        setError(false)
+        setShowModal(false)
+        setNIN('')
+      }, 3000)
     }
   }
 
