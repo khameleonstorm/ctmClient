@@ -23,7 +23,7 @@ export default function Admin() {
   const [users, setUsers] = useState([]);
   const [profits, setProfits] = useState([])
   const [nins, setNins] = useState([])
-  const [utils, setUtils] = useState({ rate: 0, bonus: 0, margin: 0, bankName: '', accName: '', accNumber: 0, walletCoin: '', walletAddress: '' })
+  const [utils, setUtils] = useState({ rate: 0, bonus: 0, margin: 0, bankName: '', accountName: '', accountNumber: 0, walletCoin: '', walletAddress: '' })
 
   
   useEffect(() => {

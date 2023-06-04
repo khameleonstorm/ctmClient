@@ -256,6 +256,10 @@ li{
   outline: none;
 }
 
+.noBorder{
+  border-radius: 10px !important;
+}
+
 .modalBtn, .cancel{
   width: 100px;
   height: 40px;
