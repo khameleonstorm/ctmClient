@@ -7,7 +7,7 @@ import dateFormat from "dateformat";
 import { ImSpinner8 } from 'react-icons/im';
 
 export default function Approval({deposits, withdrawals}) {
-  const [type, setType] = useState('deposit')
+  const [type, setType] = useState(null)
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -25,25 +25,23 @@ export default function Approval({deposits, withdrawals}) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({...data, status: 'successful', _id: undefined, date: undefined, __v: undefined})
       })
-      const data2 = await res.json()
-      console.log(res, data2)
 
-      setSuccess(`${type} approved`)
+      const Data = await res.json()
+      if (res.status === 200) setSuccess(`${type} approved`)
+      else throw new Error(Data.message)
+
     } catch (error) { setError(error.message) }
     setLoading(false)
   }
 
 
   const handleModal = (doc) => {
-    setShowModal(!showModal)
-
-    if (doc) {
-      setData(doc)
-    }
+    setShowModal(true)
+    if (doc) setData(doc)
   }
 
   const closeModal = () => {
-    setShowModal(!showModal)
+    setShowModal(false)
     setData(null)
   }
 
@@ -70,7 +68,7 @@ export default function Approval({deposits, withdrawals}) {
         </div>
         <div className={s.typeBtn}>
           <GiCardExchange />
-          <p onClick={() =>{ setType('withdrawals')}}>Withdrawals {'>>'}</p>
+          <p onClick={() =>{ setType('withdrawal')}}>Withdrawals {'>>'}</p>
         </div>
       </div>
       }
@@ -103,11 +101,11 @@ export default function Approval({deposits, withdrawals}) {
       }
 
 
-      {type === 'withdrawals' &&
+      {type === 'withdrawal' &&
         <div className={s.withdrawals}>
           <p className={s.back} onClick={() => setType('')}>{`<<`} Back</p>
           {withdrawals.map((withdrawal, i) =>
-          <div className={s.card} key={i}>
+          <div className={s.card} key={i} onClick={() => {handleModal(withdrawal)}}>
             <div style={{display: "flex", gap: "10px"}}>
               <div className={s.icon}>
                 <img src={wallet} alt='transaction icon'/>
@@ -167,5 +165,6 @@ export default function Approval({deposits, withdrawals}) {
             </div>
           }
     </div>
+    
   )
 }

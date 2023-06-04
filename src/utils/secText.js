@@ -10,7 +10,7 @@ export const secText1 = {
 }
 
 export const secText2 = {
-  title: 'Roadmap To Financial Stability',
+  title: 'Stable Finance',
   text: 'A clear roadmap towards setting achievable goals, develop a solid financial plan, and take consistent action towards creating a life of abundance and freedom.',
   img: img2
 }

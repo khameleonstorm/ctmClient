@@ -10,6 +10,7 @@ import { SiSoundcharts } from 'react-icons/si'
 import AdminSideNav from '../../components/adminSideNav/AdminSideNav';
 import Approval from '../../components/approval/Approval';
 import Ids from '../../components/ids/Ids';
+import Settings from '../../components/settings/Settings';
 
 export default function Admin() {
   const user = JSON.parse(localStorage.getItem('ctm_user'))?.user
@@ -22,6 +23,7 @@ export default function Admin() {
   const [users, setUsers] = useState([]);
   const [profits, setProfits] = useState([])
   const [nins, setNins] = useState([])
+  const [utils, setUtils] = useState({ rate: 0, bonus: 0, margin: 0, bankName: '', accName: '', accNumber: 0, walletCoin: '', walletAddress: '' })
 
   
   useEffect(() => {
@@ -96,7 +98,18 @@ export default function Admin() {
       }
     }
 
+    const fetchUtils = async () => {
+      try {
+        const res = await axios.get(`https://ctmserver.herokuapp.com/api/utils/647cd9ec3c6d2b0f516b962f`)
+        setUtils(res.data)
+        console.log(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
+
+    fetchUtils()
     fetchNins()
     fetchTransactions()
     fetchTrades()
@@ -112,7 +125,7 @@ export default function Admin() {
 
         {page === "transactions" ? <Approval deposits={deposits} withdrawals={withdrawals} />
         : page === "ids" ? <Ids nins={nins}/>
-        : page === "settings" ? <h1>settings</h1>
+        : page === "settings" ? <Settings utils={utils} />
 
 
           : <div className={s.wrp}>

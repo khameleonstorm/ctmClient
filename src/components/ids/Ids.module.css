@@ -2,7 +2,7 @@
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -13,16 +13,33 @@
   padding: 20px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 10px rgba(0,0,0,0.06);
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.left{
+.left, .right{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  font-size: .9rem;
+  font-size: .8rem;
+  font-weight: 100;
+  gap: 10px;
+}
+
+.right{
+  align-items: flex-end;
+  font-size: .8rem;
+}
+
+.name{
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.status{
+  font-size: .7rem;
+  font-weight: 300;
 }
