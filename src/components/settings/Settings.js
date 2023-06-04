@@ -37,10 +37,12 @@ export default function Settings({ utils }) {
         })
       })
       const data = await res.json()
-      if(res.status === 200) setSuccess(data.message)
-      else setError(data.message)
+      if(res.status === 200) setSuccess('Settings updated successfully')
+      else throw new Error(data.message)
 
-    } catch (error) {}
+    } catch (error) {
+      setError(error.message)
+    }
     setLoading(false)
   }
 

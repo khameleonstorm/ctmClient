@@ -24,7 +24,7 @@ if(!user.idVerified){
 if(user.idVerified){
   return (
     <div className={s.ctn}>
-      <p className='formSuccess' onClick={() => handleCopy(user.username)}>You can now invite friends to CtmPro and start earning $1 per user, Click the link to copy referral code.</p>
+      <p className='formSuccess' onClick={() => handleCopy(user.username)}>You can now invite friends to CtmPro and start earning $1 per user, Click this text to copy referral code.</p>
     </div>
   )
 }

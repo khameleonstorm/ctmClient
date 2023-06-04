@@ -21,7 +21,7 @@ export default function Ids({nins}) {
     setError(null)
     setSuccess(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/nins/`, {
+      const res = await fetch(`https://ctmserver.herokuapp.com/api/nins/`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, nin })
