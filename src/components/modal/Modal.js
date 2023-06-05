@@ -136,11 +136,11 @@ export default function Modal({type, user, handleModal}) {
                   className='modalInput' 
                   onChange={(e) => setTransfer({...transfer, amount: e.target.value})}/>
               <input 
-                value={transfer.wallet}
+                value={transfer.to}
                 type='email' 
                 placeholder='Enter Reciever Email' 
                 className='modalInput'
-                onChange={(e) => setTransfer({...transfer, wallet: e.target.value})}/>
+                onChange={(e) => setTransfer({...transfer, to: e.target.value})}/>
               <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p> 
               <p className='modalBtn' onClick={handleTransfer}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
               {error && <p className='formError'>{error}</p>}
