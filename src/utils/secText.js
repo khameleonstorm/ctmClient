@@ -2,6 +2,7 @@ import img1 from '../assets/section1.svg'
 import img2 from '../assets/section2.svg'
 import img3 from '../assets/callCenter.svg'
 import img4 from '../assets/protection.svg'
+import img5 from '../assets/sec3img.png'
 
 export const secText1 = {
   title: 'Join Our Community',
@@ -26,4 +27,12 @@ export const secText4 = {
   text: `Protecting your online security involves various measures, including fund protection, strong account passwords, and encryption.
    Fund protection ensures the safety of your money, while strong passwords and encryption help prevent unauthorized access to your accounts and sensitive information.`,
   img: img4
+}
+
+export const secText5 = {
+  title: 'Earn Daily With Zero Trading Skills',
+  text: `CtmPro Bot is an automated tool that conducts trades and executes transactions on the behalf of human traders.
+  This Bot can generate over 3.57% of users capital daily.`,
+  img: img5,
+  bg: true
 }

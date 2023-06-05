@@ -1,7 +1,11 @@
 .ctn{
   width: 100%;
   height: 100vh;
-  background-color: #263238;
+  background-image: linear-gradient(180deg, #263238e8 , #263238da), url(../../assets/sec3bg.png);
+  background-size: 110%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .wrp{
@@ -26,6 +30,10 @@
   width: 80%;
 }
 
+.ctn2 .left img{
+  width: 100%;
+}
+
 .right{
   width: 600px;
 }
@@ -41,7 +49,7 @@
 
 .right p{
   font-size: 1.3rem;
-  font-weight: 100;
+  font-weight: 200;
   color: white;
   opacity: .7;
 }
@@ -51,6 +59,7 @@
 @media screen and (max-width: 900px){
 .ctn{
   height: auto;
+  background-size: 400%;
 }
 
 .wrp{

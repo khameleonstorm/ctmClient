@@ -24,7 +24,6 @@
   margin-bottom: 10px;
   line-height: 1.2;
   letter-spacing: .8;
-  word-spacing: 100px;
 }
 
 .title{
@@ -35,7 +34,7 @@
 
 .left p{
   font-size: 1.3rem;
-  font-weight: 100;
+  font-weight: 200;
   opacity: .7;
 }
 
