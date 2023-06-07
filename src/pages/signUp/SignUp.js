@@ -42,7 +42,6 @@ export default function SignUp() {
     e.preventDefault();
     const {fullName, username, email, phone, country} = values;
     const data = {...values, password, showPassword: undefined, referredBy}
-    return console.log(data)
 
     // validating form
     if(fullName === "" || fullName.length < 3) return setFormError({...formError, fullName: "FullName is too short or invalid"});
