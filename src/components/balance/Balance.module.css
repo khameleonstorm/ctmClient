@@ -56,9 +56,10 @@
 }
 
 .name{
-  font-size: 1rem;
+  font-size: .9rem;
   font-weight: 400;
   color: #f5f2ff;
+  padding-bottom: 5px;
 }
 
 .name::first-letter{

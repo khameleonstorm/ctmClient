@@ -21,6 +21,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/signUp/:ref" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/verify/:email" element={<Verify />} />
           <Route path="/resend-email/:email" element={<ResendEmail />} />

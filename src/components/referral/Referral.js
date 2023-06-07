@@ -1,11 +1,10 @@
 import s from './Referral.module.css'
-import { ImSpinner9 } from 'react-icons/im';
 
 export default function Referral({user}) {
   
   const handleCopy = async (textToCopy) => {
     try {
-      await navigator.clipboard.writeText(textToCopy);
+      await navigator.clipboard.writeText(`https://ctmpro.co/signUp/${textToCopy}`);
       alert('Text copied to clipboard');
     } catch (err) {
       console.log('Failed to copy text: ', err);
@@ -24,7 +23,7 @@ if(!user.idVerified){
 if(user.idVerified){
   return (
     <div className={s.ctn}>
-      <p className='formSuccess' onClick={() => handleCopy(user.username)}>You can now invite friends to CtmPro and start earning $1 per user, Click this text to copy referral code.</p>
+      <p className='formSuccess' onClick={() => handleCopy(user.username)}>You can now invite friends to CtmPro and start earning $10 per user, Click this text to copy referral code or click the button above.</p>
     </div>
   )
 }

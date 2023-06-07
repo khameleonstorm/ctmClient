@@ -2,10 +2,9 @@ import styles from './SignUp.module.css';
 import Nav from '../../components/nav/Nav';
 import { FormControl, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, TextField } from '@mui/material';
 import {MdVisibilityOff, MdVisibility} from "react-icons/md"
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { countries } from '../../utils/countries';
-import { useNavigate } from 'react-router-dom';
 import { ImSpinner9 } from 'react-icons/im';
 import axios from 'axios';
 
@@ -14,16 +13,19 @@ export default function SignUp() {
   const user = JSON.parse(localStorage.getItem('ctm_user'))?.user
   const form = useRef();
   const navigate = useNavigate()
+  const { ref } = useParams();
+  const [referredBy, setReferredBy] = useState(ref || "")
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [password, setPassword] = useState("");
-  const [values, setValues] = useState({ fullName: "", username: "", email: "", phone: "", country: "", referredBy: '', showPassword: false,});
+  const [values, setValues] = useState({ fullName: "", username: "", email: "", phone: "", country: "", showPassword: false,});
 
   const [formError, setFormError] = useState({ fullName: null, username: null, email: null, phone: null, country: null, referredBy: null,})
 
 
   // handling change for input fields
   const handleChange = (prop) => (event) => {
+    if (prop === "referredBy") setReferredBy(event.target.value)
     setValues({ ...values, [prop]: event.target.value });
     setFormError({ ...formError, [prop]: null })
   };
@@ -38,8 +40,9 @@ export default function SignUp() {
   // handling form submit
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const {fullName, username, email, phone, country, referredBy} = values;
-    const data = {...values, password, showPassword: undefined}
+    const {fullName, username, email, phone, country} = values;
+    const data = {...values, password, showPassword: undefined, referredBy}
+    return console.log(data)
 
     // validating form
     if(fullName === "" || fullName.length < 3) return setFormError({...formError, fullName: "FullName is too short or invalid"});
@@ -164,6 +167,7 @@ export default function SignUp() {
           id="referredBy_code" 
           label="referredBy Code(Optional)" 
           variant="outlined" 
+          value={referredBy}
           onChange={handleChange("referredBy")}/>
 
         <div className={styles.checkbox}>

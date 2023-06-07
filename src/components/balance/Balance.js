@@ -20,6 +20,16 @@ export default function Balance({type, user}) {
     setShowModal(e)
   }
 
+    
+  const handleCopy = async (textToCopy) => {
+    try {
+      await navigator.clipboard.writeText(`https://ctmpro.co/signUp/${textToCopy}`);
+      alert('Text copied to clipboard');
+    } catch (err) {
+      console.log('Failed to copy text: ', err);
+    }
+  };
+
 
   return (
     <div className={s.ctn}>
@@ -32,10 +42,22 @@ export default function Balance({type, user}) {
               : type === "bonus"? user.bonus.toLocaleString('en-US')
               : user.card}<span>$</span>
           </h1>
+
+          {type === "balance" ? 
+                  <div className={s.btns}>
+                    <Link to="/dashboard/transfer" className={s.btn}> Transfer </Link>
+                    <p className={s.btn} onClick={() => {setModalType('withdrawal'); setShowModal(true)}}> Withdraw </p>
+                  </div>
+          : type === "trade" ?
           <div className={s.btns}>
-            <Link to="/dashboard/transfer" className={s.btn}> Transfer </Link>
-            <p className={s.btn} onClick={() => {setModalType('withdrawal'); setShowModal(true)}}> Withdraw </p>
+            <Link to="/dashboard/transfer" className={s.btn}>Transfer</Link>
           </div>
+          :
+          <div className={s.btns}>
+            <p className={s.name}>{user.username}</p>
+          </div>
+          }
+
         </div>
         <div className={s.right}>
           <Logo />
@@ -44,10 +66,11 @@ export default function Balance({type, user}) {
           <p className={s.btn} onClick={() => {setModalType('startTrade'); setShowModal(true)}}>
             Trade {">>"}
           </p>
-          ) : (
-          <Link to="/dashboard/deposit" className={s.btn}>
-            + Add Fund
-          </Link>
+          ) : type === "bonus" ? <div className={s.btn} onClick={() => handleCopy(user.username)}>Copy Referral Code</div> : 
+          (
+            <Link to="/dashboard/deposit" className={s.btn}>
+              + Add Fund
+            </Link>
           )}
         </div>
       </div>
