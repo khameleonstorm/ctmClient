@@ -54,6 +54,22 @@ export default function Modal2({type: typeOf, handleModal, user}) {
     setLoading(false)
   }
 
+  const handleBankDeposit = async (e) => {
+    setError(null)
+    try {
+      const res = await fetch(`https://ctmserver.herokuapp.com/api/utils/647cd9ec3c6d2b0f516b962f`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+      const data = await res.json()
+      console.log(data)
+      if (!res.ok) throw new Error(data.message)
+      if (res.ok) setDeposit({...deposit, amount: e.target.value/data.rate})
+    } catch (error) {
+      setError(error.message)
+    }
+  }
+
 
 
 
@@ -85,7 +101,7 @@ export default function Modal2({type: typeOf, handleModal, user}) {
         <input value={deposit.amount} type='number' placeholder='Enter Amount' className='modalInput' onChange={(e) => setDeposit({...deposit, amount: e.target.value})}/>
         <input value={deposit.hash} type='text' placeholder='Enter Transaction Hash' className='modalInput' onChange={(e) => setDeposit({...deposit, hash: e.target.value})}/>
         <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p>
-        <p className={`modalBtn ${loading && 'loadBtn'}`} onClick={handleDeposit}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
+        <p className={`modalBtn ${loading && 'loadBtn'}`} onClick={handleDeposit}>{!loading && "Send"} {loading && <ImSpinner8 className='spin'/>}</p>
         {error && <p className='formError'>{error}</p>}
         {success && <p className='formSuccess'>{success}</p>}
       </div>
@@ -93,10 +109,18 @@ export default function Modal2({type: typeOf, handleModal, user}) {
 
     {type === 'bankNext' &&
       <div className='modalWrp'>
-        <input value={deposit.amount} type='number' placeholder='Enter Amount' className='modalInput' onChange={(e) => setDeposit({...deposit, amount: e.target.value})}/>
+        <div style={{width: "49%", textAlign: 'center', fontSize: '.8rem'}}>
+          <label>NGN</label>
+          <input  type='number' className='modalInput' onChange={handleBankDeposit}/>
+        </div>
+
+        <div style={{width: "49%", textAlign: 'center', fontSize: '.8rem'}}>
+          <label>USD</label>
+          <input value={deposit.amount} type='number' className='modalInput' disabled/>
+        </div>
         <input value={deposit.hash} type='text' placeholder='Enter Transaction Ref' className='modalInput' onChange={(e) => setDeposit({...deposit, hash: e.target.value})}/>
         <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p>
-        <p className={`modalBtn ${loading && 'loadBtn'}`} onClick={handleDeposit}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
+        <p className="modalBtn" onClick={handleDeposit}>{!loading && "Send"} {loading && <ImSpinner8 className='spin'/>}</p>
         {error && <p className='formError'>{error}</p>}
         {success && <p className='formSuccess'>{success}</p>}
       </div>
