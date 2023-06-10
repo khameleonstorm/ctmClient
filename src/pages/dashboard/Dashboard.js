@@ -14,6 +14,7 @@ import TradeCounter from '../../components/tradeCounter/TradeCounter';
 import Deposit from '../../components/deposit/Deposit';
 import Referral from '../../components/referral/Referral';
 import { HiMenuAlt3 } from 'react-icons/hi';
+import Withdrawal from '../../components/withdrawal/Withdrawal';
 
 export default function Dashboard() {
   const user = JSON.parse(localStorage.getItem('ctm_user'))?.user
@@ -120,6 +121,8 @@ export default function Dashboard() {
             page === 'transfer' ? <Transfer /> :
 
             page === 'deposit' ? <Deposit /> :
+
+            page === 'withdrawal' ? <Withdrawal /> :
 
             page === 'referral' ?  
             <div className={s.wrp}>

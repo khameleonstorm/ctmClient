@@ -44,10 +44,10 @@ export default function Balance({type, user}) {
           </h1>
 
           {type === "balance" ? 
-                  <div className={s.btns}>
-                    <Link to="/dashboard/transfer" className={s.btn}> Transfer </Link>
-                    <p className={s.btn} onClick={() => {setModalType('withdrawal'); setShowModal(true)}}> Withdraw </p>
-                  </div>
+          <div className={s.btns}>
+            <Link to="/dashboard/transfer" className={s.btn}> Transfer </Link>
+            <Link to="/dashboard/withdrawal" className={s.btn}> Withdraw </Link>
+          </div>
           : type === "trade" ?
           <div className={s.btns}>
             <Link to="/dashboard/transfer" className={s.btn}>Transfer</Link>
