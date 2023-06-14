@@ -18,6 +18,7 @@ export default function Admin() {
   const navigate = useNavigate()
   const [userDoc, setUserDoc] = useState(user? user : null);
   const [deposits, setDeposits] = useState([]);
+  const [totalDeposits, setTotalDeposits] = useState(0);
   const [withdrawals, setWithdrawals] = useState([]);
   const [trades, setTrades] = useState([]);
   const [users, setUsers] = useState([]);
@@ -63,6 +64,9 @@ export default function Admin() {
         const res = await axios.get(`https://ctmserver.herokuapp.com/api/transactions`)
         if (res.data) {
           setDeposits(res.data.filter(transaction => transaction.type === "deposit"))
+          //filter out deposits and add the amount to the total deposits and the deposits status should not be pending
+          setTotalDeposits(Math.round(res.data.filter(transaction => transaction.type === "deposit" && transaction.status === 'successful').reduce((acc, transaction) => acc + transaction.amount, 0))
+          .toLocaleString('en-US'))
           setWithdrawals(res.data.filter(transaction => transaction.type === "withdrawal"))
         }
       } catch (error) {
@@ -130,7 +134,7 @@ export default function Admin() {
 
           : <div className={s.wrp}>
             <AdminCards title="Total Users" value={users.length} icon={<HiUsers />} />
-            <AdminCards title="Total Deposits" value={deposits.length} icon={<BsDatabaseFillAdd />} />
+            <AdminCards title="Total Deposits" value={totalDeposits} icon={<BsDatabaseFillAdd />} />
             <AdminCards title='Total Trades' value={trades.length} icon={<SiSoundcharts />} />
             <AdminCards title='Total Profits' value={profits} icon={<SiSoundcharts />} />
           </div>}

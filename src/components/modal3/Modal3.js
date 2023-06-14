@@ -1,5 +1,4 @@
 import { ImSpinner8 } from 'react-icons/im'
-import s from './Modal3.module.css'
 import { useState } from 'react'
 
 export default function Modal3({type, handleModal, user}) {

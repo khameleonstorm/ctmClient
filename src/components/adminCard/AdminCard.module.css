@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .card:hover{
@@ -36,7 +37,7 @@
 }
 
 .value h2{
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: 400;
   color: #f5f2ffd9;
   letter-spacing: -3px;
@@ -45,4 +46,8 @@
 .value svg{
   font-size: 7rem;
   color: #f5f2ff33;
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+
 }

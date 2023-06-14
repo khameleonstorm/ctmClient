@@ -54,10 +54,10 @@ export default function ForgotPassword() {
       setLoading(true)
       setError(null)
 
-      const res = await axios.post('https://ctmserver.herokuapp.com/api/users/new-password', { email, newPassword })
+      const res = await axios.post('http://localhost:5000/api/users/new-password', { email, newPassword })
       if(res.status === 200) {
         setLoading(false)
-        setSuccess("Password reset successful")
+        setSuccess("Password Changed Successfully, Login to continue")
       }
       else {
         setLoading(false)
@@ -75,9 +75,9 @@ export default function ForgotPassword() {
       <Nav black={true}/>
       {page === 'newPassword' ? 
           <form className="form" onSubmit={handleNewPassword}>
-            <h1>Enter New Password!</h1>
-            <TextField value={email} id="email" label="Email" variant="outlined" onChange={(e) => setEmail(e.target.value)}/>         
-            <TextField value={password} id="password" label="Password" variant="outlined" onChange={(e) => setNewPassword(e.target.value)}/>
+            <h1 style={{fontSize: "1.5rem"}}>Enter Email & New Password!</h1>  
+            <TextField value={email} id="email" label="Email" variant="outlined" onChange={(e) => setEmail(e.target.value)}/>       
+            <TextField value={newPassword} id="password" label="Password" variant="outlined" onChange={(e) => setNewPassword(e.target.value)}/>
 
             {!loading && <button className="bigBtn full">Reset</button>}
             {loading && <button disabled className="bigBtn full load"><ImSpinner9 className='spin' color="#ffffff73" size={25}/></button>}

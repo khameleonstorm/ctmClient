@@ -48,9 +48,9 @@ export default function Login() {
     const {email, password} = values;
     const data = { email, password }
     
-    if(email === "" || !email.includes("@") || email.length < 5) return setFormError({...formError, email: "Email is invalid"})
+    if(email === "" || !email.includes("@") || email.length < 1) return setFormError({...formError, email: "Email is invalid"})
 
-    if(password.length < 6) return setFormError({...formError, password: "Invalid Password"})
+    if(password.length < 1) return setFormError({...formError, password: "Invalid Password"})
 
     // sending data to server
     try {
