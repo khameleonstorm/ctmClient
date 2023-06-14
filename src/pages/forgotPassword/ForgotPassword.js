@@ -54,7 +54,7 @@ export default function ForgotPassword() {
       setLoading(true)
       setError(null)
 
-      const res = await axios.post('http://localhost:5000/api/users/new-password', { email, newPassword })
+      const res = await axios.post('https://ctmserver.herokuapp.com/api/users/new-password', { email, newPassword })
       if(res.status === 200) {
         setLoading(false)
         setSuccess("Password Changed Successfully, Login to continue")
