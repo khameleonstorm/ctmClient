@@ -4,13 +4,13 @@ import groupSupport from '../assets/groupSupport.png'
 
 
 export const homeHero = {
-  title: 'Blockchain World Of Endless Possibilities.',
+  title: 'World Of Endless Possibilities.',
   subtitle: 'Trade with our 🤖 for free!!!',
   image: growth
 }
 
 export const aboutHero = {
-  title: 'About CtmPro Auto Trading Bot🤖',
+  title: 'About CtmPro Auto Trading 🤖',
   subtitle: 'Learn more about CtmPro.',
   image: worldIsMine
 }

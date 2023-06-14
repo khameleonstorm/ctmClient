@@ -27,14 +27,21 @@
 }
 
 .title{
-  font-size: 4rem !important;
+  font-size: 2.5rem !important;
   word-spacing: 5px !important;
   margin-bottom: none !important;
 }
 
+.title2{
+  font-size: 1.5rem !important;
+  word-spacing: 5px !important;
+  margin-bottom: none !important;
+  margin-top: 50px;
+}
+
 .left p{
   font-size: 1.3rem;
-  font-weight: 200;
+  font-weight: 300;
   opacity: .7;
 }
 
@@ -85,7 +92,7 @@
 }
 
 .title{
-  font-size: 14vw !important;
+  font-size: 10vw !important;
   letter-spacing: -2px !important;
   word-spacing: 0px !important;
 }
