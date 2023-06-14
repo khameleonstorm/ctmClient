@@ -135,8 +135,11 @@ export default function Approval({deposits, withdrawals}) {
               <input value={data.from} className='modalInput' readOnly/>
               <input value={data.method} className='modalInput' readOnly/>
               <input value={data.amount} className='modalInput' readOnly/>
-              <p style={{fontSize: '.6rem', textAlign: 'center', width: '100%', padding:'10px'}}>Click the input below to copy hash</p>
+              <p style={{fontSize: '.6rem', textAlign: 'center', width: '100%', padding:'10px'}}>Click the input below to copy hash or bank details</p>
               <input onClick={() => handleCopy(data.hash)} value={data.hash} className='modalInput'  readOnly/>
+              {data.bankName && <input onClick={() => handleCopy(data.bankName)} value={data.bankName} className='modalInput'  readOnly/>}
+              {data.bankName &&<input onClick={() => handleCopy(data.accountName)} value={data.accountName} className='modalInput'  readOnly/>}
+              {data.bankName &&<input onClick={() => handleCopy(data.accountNumber)} value={data.accountNumber} className='modalInput'  readOnly/>}
               <input value={data.date} className='modalInput'  readOnly/>
               <p className='cancel' onClick={closeModal}><span>Cancel</span></p>
               <p className='modalBtn' onClick={() => handleApproval(data._id)}>{!loading && <span>Approve</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
@@ -154,8 +157,11 @@ export default function Approval({deposits, withdrawals}) {
               <input value={data.from} className='modalInput' readOnly/>
               <input value={data.method} className='modalInput' readOnly/>
               <input value={data.amount} className='modalInput' readOnly/>
-              <p style={{fontSize: '.6rem', textAlign: 'center', width: '100%', padding:'10px'}}>Click the input below to copy wallet</p>
+              <p style={{fontSize: '.6rem', textAlign: 'center', width: '100%', padding:'10px'}}>Click the input below to copy wallet or bank <details></details></p>
               <input onClick={() => handleCopy(data.wallet)} value={data.wallet} className='modalInput'  readOnly/>
+              {data.bankName && <input onClick={() => handleCopy(data.bankName)} value={data.bankName} className='modalInput'  readOnly/>}
+              {data.bankName &&<input onClick={() => handleCopy(data.accountName)} value={data.accountName} className='modalInput'  readOnly/>}
+              {data.bankName &&<input onClick={() => handleCopy(data.accountNumber)} value={data.accountNumber} className='modalInput'  readOnly/>}
               <input value={data.date} className='modalInput'  readOnly/>
               <p className='cancel' onClick={closeModal}><span>Cancel</span></p>
               <p className='modalBtn' onClick={() => handleApproval(data._id)}>{!loading && <span>Approve</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
