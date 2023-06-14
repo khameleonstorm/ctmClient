@@ -23,7 +23,7 @@ export default function SideNav() {
           <NavLink to="/dashboard/referral"><GiftIcon /> <span>Referral</span></NavLink>
         </div>
         <div className={s.note}>
-          <p>Web3 Integration Coming Soon!</p>
+          <p>CtmPro App Coming Soon!</p>
           <AnnounceIcon className={s.noteIcon}/>
         </div>
       </div>
