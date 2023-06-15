@@ -88,8 +88,8 @@ export default function Modal2({type: typeOf, handleModal, user}) {
     {type === 'bankDeposit' &&
       <div className='modalWrp'>
             <p className={s.title}>Bank Deposit</p>
-            <input onClick={() => handleCopy('5600991795')} defaultValue={'5600991795'} className='modalInput' readOnly/>
-            <input onClick={() => handleCopy('Fidelity Bank')} defaultValue={'Fidelity Bank'} className='modalInput' readOnly/>
+            <input onClick={() => handleCopy('8297639186')} defaultValue={'8297639186'} className='modalInput' readOnly/>
+            <input onClick={() => handleCopy('Moniepoint')} defaultValue={'Moniepoint '} className='modalInput' readOnly/>
             <input onClick={() => handleCopy('Phillglad Technologies')} defaultValue={'Phillglad Technologies'} className='modalInput' readOnly/>
             <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p> 
             <p className='modalBtn' onClick={handleNext}><span>Next</span></p>
