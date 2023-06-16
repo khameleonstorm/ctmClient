@@ -14,14 +14,6 @@ export default function Modal({type, user, handleModal}) {
     status: 'successful',
     method: type
   })
-  const [withdraw, setWithdraw] = useState({
-    type: 'withdrawal',
-    from: user.email,
-    wallet: '',
-    amount: 0,
-    status: 'pending',
-    method: 'wallet'
-  })
   const [trade, setTrade] = useState({
     email: user.email,
     amount: 0,
@@ -38,33 +30,9 @@ export default function Modal({type, user, handleModal}) {
         body: JSON.stringify( transfer )
       })
       const data = await res.json()
-      if (res.status ==! 200) throw new Error(data.message)
+      if (res.status !== 200) throw new Error(data.message)
       if (res.status === 200) setSuccess('Transfer Successfully Initiated') 
     } catch (error) { setError(error.message) }
-    setLoading(false)
-  }
-
-
-  const handleWithdraw = async () => {
-    setLoading(true)
-    setError(null)
-    setSuccess(null)
-    try {
-      const res = await fetch(`https://ctmserver.herokuapp.com/api/withdrawals`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify( withdraw )
-      })
-
-      const data = await res.json()
-      if (res.status !== 200) throw new Error(data.message)
-      if (res.status === 200) {
-        setSuccess('Withdrawal Successfully Initiated')
-        setLoading(false)
-      } 
-    } catch (error) { 
-      setError(error.message) 
-    }
     setLoading(false)
   }
 
@@ -143,30 +111,6 @@ export default function Modal({type, user, handleModal}) {
                 onChange={(e) => setTransfer({...transfer, to: e.target.value})}/>
               <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p> 
               <p className='modalBtn' onClick={handleTransfer}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
-              {error && <p className='formError'>{error}</p>}
-              {success && <p className='formSuccess'>{success}</p>}
-      </div>
-      }
-
-
-
-      {type === 'withdrawal' &&
-        <div className='modalWrp'>
-              <p className='modalTitle'>USDT(Network: TRC20)!</p>
-              <input 
-                value={withdraw.amount}
-                type='number' 
-                placeholder='Enter Amount' 
-                className='modalInput' 
-                onChange={(e) => setWithdraw({...withdraw, amount: e.target.value})}/>
-              <input 
-                value={withdraw.to}
-                type='text' 
-                placeholder='Enter only USDT wallet address' 
-                className='modalInput'
-                onChange={(e) => setWithdraw({...withdraw, wallet: e.target.value})}/>
-              <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p> 
-              <p className='modalBtn' onClick={handleWithdraw}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
               {error && <p className='formError'>{error}</p>}
               {success && <p className='formSuccess'>{success}</p>}
       </div>
