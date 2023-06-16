@@ -20,7 +20,7 @@ export default function Approval({deposits, withdrawals}) {
     setError(null)
     setSuccess(null)
     try {
-      const res = await fetch(`https://ctmserver.herokuapp.com/api/${type}s/${id}`, {
+      const res = await fetch(`http://localhost:5000/api/${type}s/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({...data, status: 'successful', _id: undefined, date: undefined, __v: undefined})
