@@ -122,24 +122,44 @@ export default function Admin() {
 
   return (userDoc &&
     <>
-    <AdminSideNav />
+    {page === "transactions" ?<Approval deposits={deposits} withdrawals={withdrawals} />
+
+      : page === "ids" ? 
+      <>
+        <AdminSideNav />
+        <div className={s.ctn}>
+          <main>
+            <Ids nins={nins}/>
+          </main>
+        </div>
+      </>
+
+      : page === "settings" ?         
+      <>
+      <AdminSideNav />
+      <div className={s.ctn}>
+        <main>
+          <Settings utils={utils} />
+        </main>
+      </div>
+      </>
+
+      : 
+      <>
+      <AdminSideNav />
       <div className={s.ctn}>
       <main>
         <p style={{color: "#001d13", fontSize: "1.1rem", paddingLeft: "30px"}}>Hellooo!  Admin👋</p>
-
-        {page === "transactions" ? <Approval deposits={deposits} withdrawals={withdrawals} />
-        : page === "ids" ? <Ids nins={nins}/>
-        : page === "settings" ? <Settings utils={utils} />
-
-
-          : <div className={s.wrp}>
+        <div className={s.wrp}>
             <AdminCards title="Total Users" value={users.length} icon={<HiUsers />} />
             <AdminCards title="Total Deposits" value={totalDeposits} icon={<BsDatabaseFillAdd />} />
             <AdminCards title='Total Trades' value={trades.length} icon={<SiSoundcharts />} />
             <AdminCards title='Total Profits' value={profits} icon={<SiSoundcharts />} />
-          </div>}
+          </div>
       </main>
       </div>
+      </>
+    }
     </>
   )
 }

@@ -5,6 +5,7 @@ import { GiCardExchange } from 'react-icons/gi';
 import wallet from '../../assets/wallet.svg'
 import dateFormat from "dateformat";
 import { ImSpinner8 } from 'react-icons/im';
+import AdminSideNav from '../adminSideNav/AdminSideNav';
 
 export default function Approval({deposits, withdrawals}) {
   const [type, setType] = useState(null)
@@ -20,7 +21,7 @@ export default function Approval({deposits, withdrawals}) {
     setError(null)
     setSuccess(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/${type}s/${id}`, {
+      const res = await fetch(`https://ctmserver.herokuapp.com/api/${type}s/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({...data, status: 'successful', _id: undefined, date: undefined, __v: undefined})
@@ -41,8 +42,10 @@ export default function Approval({deposits, withdrawals}) {
   }
 
   const closeModal = () => {
-    setShowModal(false)
     setData(null)
+    setShowModal(false)
+    setError('')
+    setSuccess('')
   }
 
 
@@ -59,6 +62,8 @@ export default function Approval({deposits, withdrawals}) {
 
 
   return (
+    <>
+    <AdminSideNav />
     <div className={s.ctn}>
       {!type && 
       <div className={s.type}>
@@ -127,26 +132,27 @@ export default function Approval({deposits, withdrawals}) {
         </div>
           }
 
+    </div>
+    
 
-          {showModal && type === 'deposit' &&
-            <div className='modalCtn'>
-              <div className='modalWrp'>
-              <p className='modalTitle'>Deposit Approval</p>
-              <input value={data.from} className='modalInput' readOnly/>
-              <input value={data.method} className='modalInput' readOnly/>
-              <input value={data.amount} className='modalInput' readOnly/>
-              <p style={{fontSize: '.6rem', textAlign: 'center', width: '100%', padding:'10px'}}>Click the input below to copy hash or bank details</p>
-              <input onClick={() => handleCopy(data.hash)} value={data.hash} className='modalInput'  readOnly/>
-              {data.bankName && <input onClick={() => handleCopy(data.bankName)} value={data.bankName} className='modalInput'  readOnly/>}
-              {data.bankName &&<input onClick={() => handleCopy(data.accountName)} value={data.accountName} className='modalInput'  readOnly/>}
-              {data.bankName &&<input onClick={() => handleCopy(data.accountNumber)} value={data.accountNumber} className='modalInput'  readOnly/>}
-              <input value={data.date} className='modalInput'  readOnly/>
-              <p className='cancel' onClick={closeModal}><span>Cancel</span></p>
-              <p className='modalBtn' onClick={() => handleApproval(data._id)}>{!loading && <span>Approve</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
-              {error && <p className='formError'>{error}</p>}
-              {success && <p className='formSuccess'>{success}</p>}
-              </div>
+        {showModal && type === 'deposit' &&
+          <div className='modalCtn'>
+            <div className='modalWrp'>
+            <p className='modalTitle'>Deposit Approval</p>
+            <input value={data.from} className='modalInput' readOnly/>
+            <input value={data.amount} className='modalInput' readOnly/>
+            <p style={{fontSize: '.6rem', textAlign: 'center', width: '100%', padding:'10px'}}>Click the input below to copy hash or bank details</p>
+            {data.hash && <input onClick={() => handleCopy(data.hash)} value={data.hash} className='modalInput'  readOnly/>}
+            {data.bankName && <input onClick={() => handleCopy(data.bankName)} value={data.bankName} className='modalInput'  readOnly/>}
+            {data.bankName &&<input onClick={() => handleCopy(data.accountName)} value={data.accountName} className='modalInput'  readOnly/>}
+            {data.bankName &&<input onClick={() => handleCopy(data.accountNumber)} value={data.accountNumber} className='modalInput'  readOnly/>}
+            <input value={data.date} className='modalInput'  readOnly/>
+            <p className='cancel' onClick={closeModal}><span>Cancel</span></p>
+            <p className='modalBtn' onClick={() => handleApproval(data._id)}>{!loading && <span>Approve</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
+            {error && <p className='formError'>{error}</p>}
+            {success && <p className='formSuccess'>{success}</p>}
             </div>
+          </div>
           }
 
 
@@ -155,10 +161,9 @@ export default function Approval({deposits, withdrawals}) {
               <div className='modalWrp'>
               <p className='modalTitle'>Withdrawal Approval</p>
               <input value={data.from} className='modalInput' readOnly/>
-              <input value={data.method} className='modalInput' readOnly/>
               <input value={data.amount} className='modalInput' readOnly/>
               <p style={{fontSize: '.6rem', textAlign: 'center', width: '100%', padding:'10px'}}>Click the input below to copy wallet or bank <details></details></p>
-              <input onClick={() => handleCopy(data.wallet)} value={data.wallet} className='modalInput'  readOnly/>
+              {data.wallet && <input onClick={() => handleCopy(data.wallet)} value={data.wallet} className='modalInput'  readOnly/>}
               {data.bankName && <input onClick={() => handleCopy(data.bankName)} value={data.bankName} className='modalInput'  readOnly/>}
               {data.bankName &&<input onClick={() => handleCopy(data.accountName)} value={data.accountName} className='modalInput'  readOnly/>}
               {data.bankName &&<input onClick={() => handleCopy(data.accountNumber)} value={data.accountNumber} className='modalInput'  readOnly/>}
@@ -170,7 +175,6 @@ export default function Approval({deposits, withdrawals}) {
               </div>
             </div>
           }
-    </div>
-    
+    </>
   )
 }
