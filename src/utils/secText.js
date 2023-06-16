@@ -2,7 +2,7 @@ import img1 from '../assets/section1.svg'
 import img2 from '../assets/section2.svg'
 import img3 from '../assets/callCenter.svg'
 import img4 from '../assets/protection.svg'
-import img5 from '../assets/sec3img.png'
+import img5 from '../assets/sec3img.svg'
 
 export const secText1 = {
   title: 'Join Our Community',

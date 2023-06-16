@@ -14,7 +14,7 @@ export default function Modal3({type, handleModal, user}) {
     status: 'pending',
     method: 'wallet',
     accountName: '',
-    accountNumber: '',
+    accountNumber: 0,
     bankName: ''
   })
 
