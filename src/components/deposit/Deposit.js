@@ -19,7 +19,7 @@ export default function Deposit() {
       {showModal && <Modal2 type={type} user={userDoc} handleModal={handleModal}/>}
       <div className={s.card}>
         <GiCardExchange />
-        <p onClick={() =>{ setType('cryptoDeposit'); setShowModal(true)}}>Deposit from crypto exchange {'>>'}</p>
+        <p onClick={() =>{ setType('usdtDeposit'); setShowModal(true)}}>USDT Deposit {'>>'}</p>
       </div>
       <div className={s.card}>
         <BsBank2 />

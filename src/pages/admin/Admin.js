@@ -26,6 +26,16 @@ export default function Admin() {
   const [nins, setNins] = useState([])
   const [utils, setUtils] = useState({ rate: 0, bonus: 0, margin: 0, bankName: '', accountName: '', accountNumber: 0, walletCoin: '', walletAddress: '' })
 
+
+    
+  useEffect(() => {
+    const chatDiv = document.getElementById('tidio-chat')
+    if(chatDiv) chatDiv.style.display = 'none'
+
+    return () => {
+      if(chatDiv) chatDiv.style.display = 'block'
+    }
+  }, [])
   
   useEffect(() => {
     if (!userDoc) navigate('/login')

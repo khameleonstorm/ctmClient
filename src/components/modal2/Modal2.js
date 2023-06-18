@@ -17,8 +17,8 @@ export default function Modal2({type: typeOf, handleModal, user}) {
   })
 
   const handleNext = () => {
-    if (type === 'cryptoDeposit') {
-      setType('cryptoNext')
+    if (type === 'usdtDeposit') {
+      setType('usdtNext')
     }
 
     if (type === 'bankDeposit') {
@@ -76,10 +76,10 @@ export default function Modal2({type: typeOf, handleModal, user}) {
 
   return (
     <div className='modalCtn'>
-    {type === 'cryptoDeposit' &&
+    {type === 'usdtDeposit' &&
       <div className='modalWrp'>
             <p className={s.title}>Deposit only USDT(Network: TRC20) to this address. Click the address to copy!</p>
-            <input onClick={() => handleCopy('TXDG8uxNkSBEcdYaoPn9KfxPx61cBoahXu')} defaultValue={'TXDG8uxNkSBEcdYaoPn9KfxPx61cBoahXu'} className='modalInput' readOnly/>
+            <input onClick={() => handleCopy('TCFfkiRoXrhSdTtN1Ta9VAyx9fRvztzNK5')} defaultValue={'TCFfkiRoXrhSdTtN1Ta9VAyx9fRvztzNK5'} className='modalInput' readOnly/>
             <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p> 
             <p className='modalBtn' onClick={handleNext}><span>Next</span></p>
       </div>
@@ -96,7 +96,7 @@ export default function Modal2({type: typeOf, handleModal, user}) {
     </div>
     }
 
-    {type === 'cryptoNext' &&
+    {type === 'usdtNext' &&
       <div className='modalWrp'>
         <input value={deposit.amount} type='number' placeholder='Enter Amount' className='modalInput' onChange={(e) => setDeposit({...deposit, amount: e.target.value})}/>
         <input value={deposit.hash} type='text' placeholder='Enter Transaction Hash' className='modalInput' onChange={(e) => setDeposit({...deposit, hash: e.target.value})}/>
