@@ -65,16 +65,6 @@ export default function Dashboard() {
 
   
   useEffect(() => {
-    const chatDiv = document.getElementById('tidio-chat')
-    if(chatDiv) chatDiv.style.display = 'none'
-
-    return () => {
-      if(chatDiv) chatDiv.style.display = 'block'
-    }
-  }, [])
-
-  
-  useEffect(() => {
     if (!userDoc) navigate('/login')
     if(userDoc && userDoc.isAdmin === true) navigate('/admin')
 

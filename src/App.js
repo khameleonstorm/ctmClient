@@ -12,6 +12,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import ResendEmail from './pages/resendEmail/ResendEmail';
 import Contact from './pages/contact/Contact';
 import Admin from './pages/admin/Admin';
+import TidioChatWidget from './components/tidioChatWidget/tidioChatWidget';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <TidioChatWidget />
       </Router>
     </div>
   );
