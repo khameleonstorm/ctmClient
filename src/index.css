@@ -218,7 +218,7 @@ li{
   align-items: center;
   z-index: 1000;
   overflow-y: scroll;
-  padding: 100px 0;
+  padding-bottom: 100px;
 }
 
 .modalWrp{
