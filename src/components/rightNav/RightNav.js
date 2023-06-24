@@ -14,49 +14,60 @@ import { CiLogout } from 'react-icons/ci'
 import axios from 'axios';
 
 export default function RightNav({handleOpen}) {
-  const [user, setUser] = useState({})
-  const [activeTrades, setActiveTrades] = useState([])
-  const [completedTrades, setCompletedTrades] = useState([])
-  const [referrals, setReferrals] = useState([])
+  const user = JSON.parse(localStorage.getItem('ctm_user')).user
+  const [activeTrades, setActiveTrades] = useState(0)
+  const [completedTrades, setCompletedTrades] = useState(0)
+  const [referrals, setReferrals] = useState(0)
 
   
-  useEffect(() => {
-    const res = JSON.parse(localStorage.getItem('ctm_user'))
-    setUser(res.user)
-    
-    // get all trades
-    const getTrades = async () => {
+      
+    // get all active trades
+    const getActiveTrades = async () => {
       try {
-        const res = await axios.get(`https://ctmserver.herokuapp.com/api/trades/user/${user.email}`).
-        console.log(res.data)
-        setActiveTrades(res.data.filter(trade => trade.status === 'pending').length)
-        setCompletedTrades(res.data.filter(trade => trade.status === 'completed').length)
-        console.log("numbers", activeTrades, completedTrades, referrals)
+        const res = await fetch(`https://ctmserver.herokuapp.com/api/trades/count/${user.email}`)
+        const data = await res.json()
+
+        if (res.status === 200) setActiveTrades(data.count)
+        else throw new Error(data.message)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+      
+    // get all closed trades
+    const getCompletedTrades = async () => {
+      try {
+        const res = await fetch(`https://ctmserver.herokuapp.com/api/trades/count/completed/${user.email}`)
+        const data = await res.json()
+
+        if (res.status === 200) setCompletedTrades(data.count)
+        else throw new Error(data.message)
       } catch (error) {
         console.log(error)
       }
     }
 
-    getTrades()
-  }, [user.email])
-
-  useEffect(() => {
+    // get all referrals
     const getReferrals = async () => {
       try {
-        const res = await axios.get(`https://ctmserver.herokuapp.com/api/users/referrals/${user.username}`)
-        console.log(res.data)
-        
-        if (res.data.length === 0 || !res.data) setReferrals(0)
-        else setReferrals(res.data.length)
+        const res = await fetch(`https://ctmserver.herokuapp.com/api/users/count-referrals/${user.username}`)
+        const data = await res.json()
+
+        if (res.status === 200) setReferrals(data.count)
+        else throw new Error(data.message)
       } catch (error) {
         console.log(error)
-        setReferrals(0)
       }
     }
-    
-    getReferrals()
 
-  }, [user.username])
+
+
+
+  useEffect(() => {
+    getActiveTrades()
+    getCompletedTrades()
+    getReferrals()
+  }, [])
 
   const handleLogout = () => {
     localStorage.removeItem('ctm_user')
