@@ -78,7 +78,12 @@ export default function Modal2({type: typeOf, handleModal, user}) {
     <div className='modalCtn'>
     {type === 'usdtDeposit' &&
       <div className='modalWrp'>
-            <p className={s.title}>Deposit only USDT(Network: TRC20) to this address. Click the address to copy!</p>
+            <p className={s.title}>Deposit only USDT(Network: TRC20) to this address.</p>
+            <p className={s.title2}>(1) Tap on the address to copy</p>
+            <p className={s.title2}>(2) Send USDT to the address </p>
+            <p className={s.title2}>(3) Click on NEXT to fill your transaction details</p> 
+            <p className={s.title2}>(4) wait for 5mins for your deposit to be approved.</p>
+            <p className={s.title2}>(5) Refresh and your money will appear in your dashboard</p>
             <input onClick={() => handleCopy('TCFfkiRoXrhSdTtN1Ta9VAyx9fRvztzNK5')} defaultValue={'TCFfkiRoXrhSdTtN1Ta9VAyx9fRvztzNK5'} className='modalInput' readOnly/>
             <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p> 
             <p className='modalBtn' onClick={handleNext}><span>Next</span></p>
@@ -88,6 +93,11 @@ export default function Modal2({type: typeOf, handleModal, user}) {
     {type === 'bankDeposit' &&
       <div className='modalWrp'>
             <p className={s.title}>Bank Deposit</p>
+            <p className={s.title2}>(1) Tap on the account number to copy</p>
+            <p className={s.title2}>(2) Send funds to the bank account </p>
+            <p className={s.title2}>(3) Click on NEXT to fill your transaction details</p> 
+            <p className={s.title2}>(4) Wait for 5mins for your deposit to be approved</p>
+            <p className={s.title2}>(5) Refresh and your money will appear in your dashboard</p>
             <input onClick={() => handleCopy('8297639186')} defaultValue={'8297639186'} className='modalInput' readOnly/>
             <input onClick={() => handleCopy('Moniepoint')} defaultValue={'Moniepoint '} className='modalInput' readOnly/>
             <input onClick={() => handleCopy('Phillglad Technologies')} defaultValue={'Phillglad Technologies'} className='modalInput' readOnly/>
