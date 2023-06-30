@@ -26,16 +26,8 @@
   height: 50px;
   padding: 10px;
   border-radius: 10px;
-  font-size: 3rem;
-  color: #000000aa;
-  background-image: linear-gradient(180deg,  #00ff9d0f, #00ff9d0f);
-  opacity: .5;
-}
-
-.card:nth-child(2) svg{
-  background-image: linear-gradient(180deg,  #ff00370f, #ff00370f);
-}
-
-.card:nth-child(3) svg{
-  background-image: linear-gradient(180deg,  #fb00ff11, #fb00ff11);
+  font-size: 3.5rem;
+  color: #000000;
+  background-color: #ffffff6f;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .05);
 }

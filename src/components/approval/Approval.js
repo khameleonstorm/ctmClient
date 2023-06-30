@@ -141,8 +141,7 @@ export default function Approval({deposits, withdrawals}) {
             <p className='modalTitle'>Deposit Approval</p>
             <input value={data.from} className='modalInput' readOnly/>
             <input value={data.amount} className='modalInput' readOnly/>
-            <p style={{fontSize: '.6rem', textAlign: 'center', width: '100%', padding:'10px'}}>Click the input below to copy hash or bank details</p>
-            {data.hash && <input onClick={() => handleCopy(data.hash)} value={data.hash} className='modalInput'  readOnly/>}
+            <p style={{fontSize: '.6rem', textAlign: 'center', width: '100%', padding:'10px'}}>Click the input below to copy bank details</p>
             {data.bankName && <input onClick={() => handleCopy(data.bankName)} value={data.bankName} className='modalInput'  readOnly/>}
             {data.bankName &&<input onClick={() => handleCopy(data.accountName)} value={data.accountName} className='modalInput'  readOnly/>}
             {data.bankName &&<input onClick={() => handleCopy(data.accountNumber)} value={data.accountNumber} className='modalInput'  readOnly/>}

@@ -1,0 +1,16 @@
+.title{
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.title2{
+  font-size: .8rem;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.copied{
+  font-size: .8rem;
+}
