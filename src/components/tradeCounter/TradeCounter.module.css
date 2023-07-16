@@ -20,7 +20,7 @@
 }
 
 .bar{
-  background-image: linear-gradient(90deg, rgba(255, 0, 72, 0.5) 0%, #00B373 5%, #00d873 50%);
+  background-image: linear-gradient(90deg, #d18800 0%, #00B35F 3%, #00ff88 90%);
 }
 
 .text{
