@@ -24,7 +24,7 @@ export default function RightNav({handleOpen}) {
     // get all active trades
     const getActiveTrades = async () => {
       try {
-        const res = await fetch(`https://ctmserver.herokuapp.com/api/trades/count/${user.email}`)
+        const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/trades/count/${user.email}`)
         const data = await res.json()
 
         if (res.status === 200) setActiveTrades(data.count)
@@ -37,7 +37,7 @@ export default function RightNav({handleOpen}) {
     // get all closed trades
     const getCompletedTrades = async () => {
       try {
-        const res = await fetch(`https://ctmserver.herokuapp.com/api/trades/count/completed/${user.email}`)
+        const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/trades/count/completed/${user.email}`)
         const data = await res.json()
 
         if (res.status === 200) setCompletedTrades(data.count)
@@ -50,7 +50,7 @@ export default function RightNav({handleOpen}) {
     // get all referrals
     const getReferrals = async () => {
       try {
-        const res = await fetch(`https://ctmserver.herokuapp.com/api/users/count-referrals/${user.username}`)
+        const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/users/count-referrals/${user.username}`)
         const data = await res.json()
 
         if (res.status === 200) setReferrals(data.count)

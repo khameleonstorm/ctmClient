@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import s from './Admin.module.css'
+import s from './Admin.module.css';
 import { io } from 'socket.io-client';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import AdminCards from '../../components/adminCard/AdminCard';
-import { HiUsers } from 'react-icons/hi'
-import { BsDatabaseFillAdd } from 'react-icons/bs'
-import { SiSoundcharts } from 'react-icons/si'
+import { HiUsers } from 'react-icons/hi';
+import { BsDatabaseFillAdd } from 'react-icons/bs';
+import { SiSoundcharts } from 'react-icons/si';
 import AdminSideNav from '../../components/adminSideNav/AdminSideNav';
 import Approval from '../../components/approval/Approval';
 import Ids from '../../components/ids/Ids';
@@ -55,7 +55,7 @@ export default function Admin() {
       // fetch users data using axios
       const fetchUsers = async () => {
         try {
-          const res = await axios.get(`https://ctmserver.herokuapp.com/api/users`)
+          const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/users`)
           if (res.data) setUsers(res.data)
         } catch (error) {
           console.log(error)
@@ -71,7 +71,7 @@ export default function Admin() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const res = await axios.get(`https://ctmserver.herokuapp.com/api/transactions`)
+        const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/transactions`)
         if (res.data) {
           setDeposits(res.data.filter(transaction => transaction.type === "deposit"))
           //filter out deposits and add the amount to the total deposits and the deposits status should not be pending
@@ -86,7 +86,7 @@ export default function Admin() {
 
     const fetchTrades = async () => {
       try {
-        const res = await axios.get(`https://ctmserver.herokuapp.com/api/trades`)
+        const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/trades`)
         if (res.data) {
           setTrades(res.data)
 
@@ -104,7 +104,7 @@ export default function Admin() {
 
     const fetchNins = async () => {
       try {
-        const res = await axios.get(`https://ctmserver.herokuapp.com/api/nins`)
+        const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/nins`)
         setNins(res.data)
         console.log(res.data)
       } catch (error) {
@@ -114,7 +114,7 @@ export default function Admin() {
 
     const fetchUtils = async () => {
       try {
-        const res = await axios.get(`https://ctmserver.herokuapp.com/api/utils/647cd9ec3c6d2b0f516b962f`)
+        const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/utils/647cd9ec3c6d2b0f516b962f`)
         setUtils(res.data)
         console.log(res.data)
       } catch (error) {

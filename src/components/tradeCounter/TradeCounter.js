@@ -15,8 +15,8 @@ export default function TradeCounter({ trades }) {
           </div>
 
           <div className={s.barWrp}>
-            <div style={{ backgroundColor: '#f5f2fd', height: '9px', borderRadius: '15px', width: '100%'}}>
-            <div style={{ height: '100%', borderRadius: '15px', width: `${(trade.progress / 1440) * 100}%`}} className={s.bar}/>
+            <div style={{ backgroundColor: '#f5f2fd', height: '9px', borderRadius: '15px', width: '100%', overflow: 'hidden'}}>
+            <div style={{ height: '100%', borderRadius: '15px', width: `${(trade.progress / 24) * 100}%`}} className={s.bar}/>
           </div>
           </div>
         </div>

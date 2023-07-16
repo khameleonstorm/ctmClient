@@ -24,7 +24,7 @@ export default function Modal({type, user, handleModal}) {
     setError(null)
     setSuccess(null)
     try {
-      const res = await fetch(`https://ctmserver.herokuapp.com/api/transfers/${type}`, {
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/transfers/${type}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( transfer )
@@ -42,14 +42,15 @@ export default function Modal({type, user, handleModal}) {
     setError(null)
     setSuccess(null)
     try {
-      const res = await fetch(`https://ctmserver.herokuapp.com/api/trades`, {
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/trades`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( trade )
       })
       const data = await res.json()
-      if (res.status === 200) setSuccess("Trade Successfully Initiated")
-      if (res.status !== 200) throw new Error(data.message)
+      console.log(res, data)
+      if (res.ok) setSuccess("Trade Successfully Initiated")
+      else throw new Error(data.message)
 
     } catch (error) { setError(error.message) }
     setLoading(false)

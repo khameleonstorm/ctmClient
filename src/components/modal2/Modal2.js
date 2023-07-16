@@ -41,7 +41,7 @@ export default function Modal2({type: typeOf, handleModal, user}) {
     setError(null)
     setSuccess(null)
     try {
-      const response = await fetch(`https://ctmserver.herokuapp.com/api/deposits`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/deposits`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( deposit )
@@ -56,7 +56,7 @@ export default function Modal2({type: typeOf, handleModal, user}) {
   const handleBankDeposit = async (e) => {
     setError(null)
     try {
-      const res = await fetch(`https://ctmserver.herokuapp.com/api/utils/647cd9ec3c6d2b0f516b962f`, {
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/utils/647cd9ec3c6d2b0f516b962f`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })

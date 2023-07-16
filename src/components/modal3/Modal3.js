@@ -24,7 +24,7 @@ export default function Modal3({type, handleModal, user}) {
     setError(null)
     setSuccess(null)
     try {
-      const response = await fetch(`https://ctmserver.herokuapp.com/api/withdrawals`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/withdrawals`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( {...withdraw, amount: Number(usd)} )
@@ -40,7 +40,7 @@ export default function Modal3({type, handleModal, user}) {
     setUsd(e.target.value)
     setError(null)
     try {
-      const res = await fetch(`https://ctmserver.herokuapp.com/api/utils/647cd9ec3c6d2b0f516b962f`, {
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/utils/647cd9ec3c6d2b0f516b962f`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })

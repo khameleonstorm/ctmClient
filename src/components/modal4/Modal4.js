@@ -42,7 +42,7 @@ export default function Modal4({type: typeOf, handleModal, user}) {
 
 
     try {
-      const response = await fetch(`https://ctmserver.herokuapp.com/api/deposits`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/deposits`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify( {...deposit, amount: convertedAmount} )

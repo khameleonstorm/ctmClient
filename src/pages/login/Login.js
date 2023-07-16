@@ -57,7 +57,7 @@ export default function Login() {
       setLoading(true)
       setError(null)
 
-      const res = await axios.post('https://ctmserver.herokuapp.com/api/users/login', { ...data })
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/users/login`, { ...data })
       if(res.status === 200)  {
         const { token, user } = res.data
         window.localStorage.setItem("ctm_user", JSON.stringify({ token, user }))

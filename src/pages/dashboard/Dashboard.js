@@ -15,6 +15,7 @@ import Deposit from '../../components/deposit/Deposit';
 import Referral from '../../components/referral/Referral';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import Withdrawal from '../../components/withdrawal/Withdrawal';
+import UsdChart from '../../components/usdChart/UsdChart';
 
 export default function Dashboard() {
   const user = JSON.parse(localStorage.getItem('ctm_user'))?.user
@@ -35,7 +36,7 @@ export default function Dashboard() {
   // fetch user data using axios
   const fetchUser = async () => {
     try {
-      const res = await axios.get(`https://ctmserver.herokuapp.com/api/users/${userDoc._id}`)
+      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/users/${userDoc._id}`)
       setUserDoc(res.data)
       
       // get user token from local storage
@@ -54,7 +55,7 @@ export default function Dashboard() {
 
   const fetchTrades = async () => {
     try {
-      const response = await fetch(`https://ctmserver.herokuapp.com/api/trades/user/${userDoc.email}`);
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/trades/user/${userDoc?.email}`);
       const data = await response.json();
       console.log(data)
       if (data) setTrades(data);
@@ -88,7 +89,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const res = await axios.get(`https://ctmserver.herokuapp.com/api/transactions/user/${userDoc.email}`)
+        const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/transactions/user/${userDoc.email}`)
         console.log(res.data)
         setTransactions(res.data)
       } catch (error) {
@@ -113,7 +114,7 @@ export default function Dashboard() {
             page === 'trade' ?  
               <div className={s.wrp}>
                 <Balance type="trade" user={userDoc}/>
-                <Activity transactions={transactions} trades={trades}  type={"trade"}/>
+                <UsdChart />
                 <TradeCounter user={userDoc} trades={trades}/>
               </div>:
 

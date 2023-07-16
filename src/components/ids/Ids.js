@@ -16,7 +16,7 @@ export default function Ids({nins}) {
   const handleSubmit = async (id) => {
     setLoadingId(id)
     try {
-      const res = await fetch(`https://ctmserver.herokuapp.com/api/nins/`, {
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/nins/`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, nin })

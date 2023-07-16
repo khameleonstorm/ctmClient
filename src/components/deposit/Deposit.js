@@ -38,17 +38,17 @@ export default function Deposit() {
 
       <div className={s.card}>
         <SkrillIcon />
-        <p onClick={() =>{ setType('skrill'); setShowModal2(true)}}>Skrill Deposit{'>>'}</p>
+        <p onClick={() =>{alert('This deposit option is currently not available')}}>Skrill Deposit {'>>'}</p>
       </div>
 
       <div className={s.card}>
         <SiPayoneer color='#c70056'/>
-        <p onClick={() =>{ setType('payoneer'); setShowModal2(true)}}>Payoneer Deposit{'>>'}</p>
+        <p onClick={() =>{alert('This deposit option is currently not available')}}>Payoneer Deposit {'>>'}</p>
       </div>
 
       <div className={s.card}>
         <ImPaypal color='#005fcc'/>
-        <p onClick={() =>{ setType('paypal'); setShowModal2(true)}}>PayPal Deposit{'>>'}</p>
+        <p onClick={() =>{alert('This deposit option is currently not available')}}>PayPal Deposit {'>>'}</p>
       </div>
 
     </div>
