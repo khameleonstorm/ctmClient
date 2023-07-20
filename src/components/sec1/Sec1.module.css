@@ -43,7 +43,7 @@
   font-size: 1.2rem;
   font-weight: 300;
   opacity: .7;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .p{
@@ -99,11 +99,12 @@
 }
 
 .left p{
-  font-size: .95rem;
+  font-size: 1.05rem;
 }
 
 .p{
-  font-size: 1rem !important;
+  font-size: 1.05rem !important;
+  font-weight: 400 !important;	
 }
 
 .right{

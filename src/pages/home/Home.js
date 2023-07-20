@@ -31,7 +31,7 @@ export default function Home() {
         <Nav />
         <Hero data={homeHero}/>
         <Sec1 data={secText1} join={true}/>
-        <Sec3 data={secText5}/>
+        <Sec3 data={secText5} mail={true}/>
         <Sec2 data={secText2} />
         <Sec3 data={secText3} />
         <Sec1 data={secText4} />

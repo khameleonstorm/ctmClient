@@ -4,8 +4,8 @@ import groupSupport from '../assets/groupSupport.png'
 
 
 export const homeHero = {
-  title: 'World Of Endless Possibilities.',
-  subtitle: 'Trade with our 🤖 for free!!!',
+  title: 'Buy, trade, and earn digital assets daily on CtmPro.',
+  subtitle: 'Trade and Earn daily…',
   image: growth
 }
 

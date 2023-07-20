@@ -18,7 +18,7 @@ export const secText2 = {
 
 export const secText3 = {
   title: 'Super Active Customer Service',
-  text: 'A clear roadmap towards setting achievable goals, develop a solid financial plan, and take consistent action towards creating a life of abundance and freedom.',
+  text: 'Our 24/7 Customer Service Representative will handle your complaints, provide appropriate solutions for you, and follow up to resolve any issues you experience.',
   img: img3
 }
 
@@ -30,9 +30,8 @@ export const secText4 = {
 }
 
 export const secText5 = {
-  title: 'Earn Daily With Zero Trading Skills',
-  text: `CtmPro Bot is an automated tool that conducts trades and executes transactions on the behalf of human traders.
-  This Bot can generate over 3.57% of users capital daily.`,
+  title: 'Earn Daily With No Technical Analysis',
+  text: `CtmPro merchants make profit by taking advantage of the price differences between the buy orders and sell orders in USDT/USD market. The merchants buy USDT at the rate of $1.00/USDT and sell at the rate of $1.035/USDT which results to a profit margin of 0.35 Cents per USDT and $350 for USDT10,000. This process is usually repeated more than once in 24 hours generating over 3% of the capital daily depending on the market price.`,
   img: img5,
   bg: true
 }

@@ -1,0 +1,28 @@
+.ctn{
+  width: 100%;
+  height: 100vh;
+}
+
+.wrp{
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.txt{
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: rgb(10, 10, 10);
+  margin-bottom: 10px;
+}
+
+
+
+
+@media screen and (max-width: 900px){
+.ctn{
+  height: auto;
+  padding: 0 20px 50px 20px;
+}
+}
