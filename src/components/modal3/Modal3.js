@@ -23,11 +23,15 @@ export default function Modal3({type, handleModal, user}) {
     setLoading(true)
     setError(null)
     setSuccess(null)
+    // remove withdrawal fee from usd amount
+    const withdrawalAmount = Number(usd) * 0.985
+
+
     try {
       const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/withdrawals`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify( {...withdraw, amount: Number(usd)} )
+        body: JSON.stringify( {...withdraw, amount: withdrawalAmount} )
       })
       const data = await response.json()
       if (!response.ok) throw new Error(data.message)
@@ -65,6 +69,7 @@ export default function Modal3({type, handleModal, user}) {
       <div className='modalWrp'>
         <input value={withdraw.amount} type='number' placeholder='Enter Amount' className='modalInput' onChange={(e) => {setWithdraw({...withdraw, amount: e.target.value}); setUsd(e.target.value)}}/>
         <input value={withdraw.wallet} type='text' placeholder='Enter wallet address' className='modalInput' onChange={(e) => setWithdraw({...withdraw, wallet: e.target.value})}/>
+        <p className='formWarning'>Please note: you will be charged 1.5% Withdrawal Fee!</p>
         <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p>
         <p className="modalBtn" onClick={handlewithdraw}>{!loading && "Send"} {loading && <ImSpinner8 className='spin'/>}</p>
         {error && <p className='formError'>{error}</p>}
@@ -86,6 +91,7 @@ export default function Modal3({type, handleModal, user}) {
         <input value={withdraw.accountName} type='text' placeholder='Enter Account Name' className='modalInput' onChange={(e) => setWithdraw({...withdraw, accountName: e.target.value})}/>
         <input value={withdraw.accountNumber} type='text' placeholder='Enter Account Number' className='modalInput' onChange={(e) => setWithdraw({...withdraw, accountNumber: e.target.value})}/>
         <input value={withdraw.bankName} type='text' placeholder='Enter Bank Name' className='modalInput' onChange={(e) => setWithdraw({...withdraw, bankName: e.target.value})}/>
+        <p className='formWarning'>Please note: you will be charged 1.5% Withdrawal Fee!</p>
         <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p>
         <p className="modalBtn" onClick={handlewithdraw}>{!loading && "Send"} {loading && <ImSpinner8 className='spin'/>}</p>
         {error && <p className='formError'>{error}</p>}

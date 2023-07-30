@@ -48,7 +48,6 @@ export default function Modal({type, user, handleModal}) {
         body: JSON.stringify( trade )
       })
       const data = await res.json()
-      console.log(res, data)
       if (res.ok) setSuccess("Trade Successfully Initiated")
       else throw new Error(data.message)
 
@@ -129,7 +128,7 @@ export default function Modal({type, user, handleModal}) {
                 className='modalInput' 
                 onChange={(e) => setTrade({...trade, amount: e.target.value})}/>
               <p className='cancel' onClick={() => handleModal(false)}><span>Cancel</span></p> 
-              <p className='modalBtn' onClick={handleTrade}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</p>
+              <button className='modalBtn' disabled={loading} onClick={handleTrade}>{!loading && <span>Send</span>} {loading && <span><ImSpinner8 className='spin'/></span>}</button>
               {error && <p className='formError'>{error}</p>}
               {success && <p className='formSuccess'>{success}</p>}
       </div>
